@@ -138,7 +138,202 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center pb-8">
+        {/* Keywords Section */}
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+          <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 mb-8 text-xs text-gray-500 dark:text-gray-400">
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Providence SEO Company
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Website Design Providence RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Digital Marketing Providence RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              SEO Services Rhode Island
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Local SEO Providence RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Marketing Agency Providence RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Rhode Island Web Development
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              PPC Management Providence
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Social Media Marketing RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Affordable Web Design RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Best SEO Agency RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Search Engine Optimization Providence
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              RI Small Business Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Ecommerce Website Design RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Content Marketing Providence
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Providence WordPress Developer
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Online Marketing Services RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Branding Agency Providence
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Westerly Rhode Island Internet Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Rhode Island Internet Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Connecticut Internet Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Massachusetts Internet Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Westerly Rhode Island SEO
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Rhode Island SEO
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Connecticut SEO
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Massachusetts SEO
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              USA SEO
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              USA Internet Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Newport RI SEO
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Cranston Digital Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Warwick Web Design
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              East Greenwich SEO Services
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Pawtucket Website Development
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              North Kingstown Digital Agency
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              South County RI Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Hartford CT SEO Company
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Boston MA Digital Marketing
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              New England SEO Services
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Google Ads Management RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Facebook Ads Providence
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              E-commerce SEO Rhode Island
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Shopify Experts Providence
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              WordPress SEO Rhode Island
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Mobile Website Design RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Responsive Web Design Providence
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              SEO Consultant Rhode Island
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Local Business SEO RI
+            </a>{" "}
+            •
+            <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+              Technical SEO Services Providence
+            </a>
+          </div>
+
           <p className="text-gray-600 dark:text-gray-400">
             &copy; 2025 RIMarketTrends.com. powered by{" "}
             <a
