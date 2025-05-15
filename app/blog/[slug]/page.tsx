@@ -1,5 +1,4 @@
-import { blogPosts } from "@/lib/utils"
-import { formatDate } from "@/lib/utils"
+import { blogPosts, formatDate, generateDynamicBlogPost } from "@/lib/utils"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -14,25 +13,69 @@ interface BlogPostPageProps {
   }
 }
 
+// Update the generateMetadata function to use our improved keyword handling
+export async function generateMetadata({ params }: BlogPostPageProps) {
+  const { slug } = params
+
+  // Try to find an existing blog post
+  const post = blogPosts.find((post) => post.slug === slug)
+
+  if (post) {
+    return {
+      title: `${post.title} | RIMarketTrends.com`,
+      description: post.description,
+    }
+  }
+
+  // If no post found, create a title from the slug
+  const title = slug
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
+
+  return {
+    title: `${title} | Expert Rhode Island Marketing Services`,
+    description: `Learn about ${title} and how professional ${title} services can help your Rhode Island business grow online.`,
+  }
+}
+
 export function generateStaticParams() {
   return blogPosts.map((post) => ({
     slug: post.slug,
   }))
 }
 
+// Update the dynamic post generation in the component
 export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = blogPosts.find((post) => post.slug === params.slug)
+  const { slug } = params
 
-  if (!post) {
+  // Try to find an existing blog post
+  const post = blogPosts.find((post) => post.slug === slug)
+
+  // If no post is found, create a dynamic one based on the slug
+  const dynamicPost = !post
+    ? generateDynamicBlogPost(
+        slug
+          .split("-")
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(" "),
+      )
+    : null
+
+  if (!post && !dynamicPost) {
     notFound()
   }
 
-  // Get related posts (excluding current post)
-  const relatedPosts = blogPosts.filter((p) => p.slug !== params.slug).slice(0, 2)
+  const currentPost = post || dynamicPost
+
+  // Get related posts (excluding current post and placeholders)
+  const relatedPosts = blogPosts
+    .filter((p) => p.slug !== slug && p.slug !== "placeholder-dynamic" && !p.isDynamic)
+    .slice(0, 2)
 
   // Use the post's imageUrl or a default placeholder
   const postImage =
-    post.imageUrl || `https://placehold.co/1200x675/0096FF/FFFFFF.png?text=${encodeURIComponent(post.title)}`
+    currentPost.imageUrl || `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(currentPost.title)}`
 
   return (
     <div className="pt-0 pb-20">
@@ -98,18 +141,18 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           <div className="mb-8">
             <div className="flex items-center mb-4 text-sm">
-              <time className="text-gray-500 dark:text-gray-400">{formatDate(post.date)}</time>
+              <time className="text-gray-500 dark:text-gray-400">{formatDate(currentPost.date)}</time>
               <span className="mx-2 text-gray-300 dark:text-gray-600">•</span>
               <span className="text-primary dark:text-primary/80">Rhode Island Marketing</span>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">{post.title}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">{currentPost.title}</h1>
           </div>
 
           <div className="relative rounded-2xl overflow-hidden shadow-xl mb-10 ring-1 ring-gray-200 dark:ring-gray-800">
             <div className="aspect-[16/9] relative">
               <Image
                 src={postImage || "/placeholder.svg"}
-                alt={post.title}
+                alt={currentPost.title}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 800px"
@@ -122,10 +165,10 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           <div className="prose prose-lg max-w-none dark:prose-invert">
             {/* Replace dangerouslySetInnerHTML with ReactMarkdown */}
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <ReactMarkdown>{currentPost.content}</ReactMarkdown>
           </div>
 
-          <SocialShare title={post.title} url={`https://rimarkettrends.com/blog/${post.slug}`} />
+          <SocialShare title={currentPost.title} url={`https://rimarkettrends.com/blog/${params.slug}`} />
 
           <div className="mt-12 pt-12 border-t border-gray-200 dark:border-gray-800" />
 

@@ -4,6 +4,14 @@ import { Twitter } from "lucide-react"
 import React from "react"
 
 export default function Footer() {
+  // Function to convert keyword to URL slug
+  const keywordToSlug = (keyword: string) => {
+    return keyword
+      .toLowerCase()
+      .replace(/[^\w\s]/g, "") // Remove special characters
+      .replace(/\s+/g, "-") // Replace spaces with hyphens
+  }
+
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 pt-16 border-t border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4">
@@ -67,7 +75,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="https://amentiai.com/contact"
+                  href="https://amentiai.com/#contact"
                   className="text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors duration-200"
                 >
                   Contact
@@ -193,9 +201,12 @@ export default function Footer() {
               "Technical SEO Services Providence",
             ].map((keyword, index, array) => (
               <React.Fragment key={keyword}>
-                <a href="https://amentiai.com" className="hover:text-primary transition-colors duration-200">
+                <Link
+                  href={`/blog/${keywordToSlug(keyword)}`}
+                  className="hover:text-primary transition-colors duration-200"
+                >
                   {keyword}
-                </a>
+                </Link>
                 {index < array.length - 1 && " • "}
               </React.Fragment>
             ))}
