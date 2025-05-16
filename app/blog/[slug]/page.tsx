@@ -224,7 +224,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               strategies tailored to your specific needs.
             </p>
             <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-all duration-300">
-              <Link href="https://amentiai.com/#contact">Get a Free Consultation</Link>
+              <Link href="/contact">Get a Free Consultation</Link>
             </Button>
           </div>
         </article>

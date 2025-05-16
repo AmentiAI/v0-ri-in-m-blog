@@ -46,7 +46,7 @@ export default function Home() {
                 ))}
               </ul>
               <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-all duration-300">
-                <Link href="https://amentiai.com/services">Explore Our Services</Link>
+                <Link href="/services">Explore Our Services</Link>
               </Button>
             </div>
             <div className="order-1 md:order-2">
@@ -131,7 +131,7 @@ export default function Home() {
 
               <div className="mt-8">
                 <Button asChild>
-                  <Link href="https://amentiai.com/about">Learn More About Us</Link>
+                  <Link href="/about">Learn More About Us</Link>
                 </Button>
               </div>
             </div>

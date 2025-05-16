@@ -41,8 +41,69 @@ export function keywordToSlug(keyword: string): string {
     .replace(/\s+/g, "-") // Replace spaces with hyphens
 }
 
+// List of footer keywords to use for amentiai.com links
+export const footerKeywords = [
+  "Providence SEO Company",
+  "Website Design Providence RI",
+  "Digital Marketing Providence RI",
+  "SEO Services Rhode Island",
+  "Local SEO Providence RI",
+  "Marketing Agency Providence RI",
+  "Rhode Island Web Development",
+  "PPC Management Providence",
+  "Social Media Marketing RI",
+  "Affordable Web Design RI",
+  "Best SEO Agency RI",
+  "Search Engine Optimization Providence",
+  "RI Small Business Marketing",
+  "Ecommerce Website Design RI",
+  "Content Marketing Providence",
+  "Providence WordPress Developer",
+  "Online Marketing Services RI",
+  "Branding Agency Providence",
+  "Westerly Rhode Island Internet Marketing",
+  "Rhode Island Internet Marketing",
+  "Connecticut Internet Marketing",
+  "Massachusetts Internet Marketing",
+  "Westerly Rhode Island SEO",
+  "Rhode Island SEO",
+  "Connecticut SEO",
+  "Massachusetts SEO",
+  "USA SEO",
+  "USA Internet Marketing",
+  "Newport RI SEO",
+  "Cranston Digital Marketing",
+  "Warwick Web Design",
+  "East Greenwich SEO Services",
+  "Pawtucket Website Development",
+  "North Kingstown Digital Agency",
+  "South County RI Marketing",
+  "Hartford CT SEO Company",
+  "Boston MA Digital Marketing",
+  "New England SEO Services",
+  "Google Ads Management RI",
+  "Facebook Ads Providence",
+  "E-commerce SEO Rhode Island",
+  "Shopify Experts Providence",
+  "WordPress SEO Rhode Island",
+  "Mobile Website Design RI",
+  "Responsive Web Design Providence",
+  "SEO Consultant Rhode Island",
+  "Local Business SEO RI",
+  "Technical SEO Services Providence",
+]
+
+// Get a random keyword from the footer keywords list
+export function getRandomFooterKeyword(): string {
+  const randomIndex = Math.floor(Math.random() * footerKeywords.length)
+  return footerKeywords[randomIndex]
+}
+
 // Add function to generate dynamic content for keyword articles
 export function generateKeywordArticleContent(keyword: string): string {
+  // Get a random keyword from the footer for the amentiai.com link
+  const linkKeyword = getRandomFooterKeyword()
+
   return `
 # ${keyword}
 
@@ -94,7 +155,7 @@ Our team brings unmatched expertise in ${keyword} combined with deep knowledge o
 
 ## Ready to Transform Your ${keyword} Strategy?
 
-If you're ready to take your Rhode Island business to the next level with professional ${keyword} services, we're here to help. [Contact Amenti AI](https://amentiai.com/#contact) today for a free consultation and discover how our tailored solutions can drive growth for your business.
+If you're ready to take your Rhode Island business to the next level with professional ${keyword} services, we're here to help. Contact our [${linkKeyword}](https://amentiai.com) team today for a free consultation and discover how our tailored solutions can drive growth for your business.
 `
 }
 
@@ -104,6 +165,9 @@ export function generateDynamicBlogPost(keyword: string) {
   const date = new Date()
   date.setDate(date.getDate() - Math.floor(Math.random() * 60)) // Random date within last 60 days
 
+  // Get a random keyword from the footer for the amentiai.com link
+  const linkKeyword = getRandomFooterKeyword()
+
   return {
     title: keyword,
     slug: slug,
@@ -112,12 +176,11 @@ export function generateDynamicBlogPost(keyword: string) {
     imageUrl: `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(keyword)}`,
     content: generateKeywordArticleContent(keyword),
     isDynamic: true,
+    linkKeyword: linkKeyword,
   }
 }
 
-// Ensure the AMP Roofing article is at the top of the blogPosts array
-// and has complete content
-
+// Update the existing blog posts to have only one amentiai.com link using a footer keyword
 export const blogPosts = [
   {
     title: "How Amenti AI Transformed AMP Roofing LLC's Digital Presence",
@@ -129,11 +192,11 @@ export const blogPosts = [
     content: `
 # How Amenti AI Transformed AMP Roofing LLC's Digital Presence
 
-In the competitive roofing industry, establishing a strong online presence is crucial for attracting new customers and growing a business. [AMP Roofing LLC](https://www.amproofingllc.com/), a leading Rhode Island roofing contractor, recognized this need and partnered with [Amenti AI](https://www.amentiai.com/) to transform their digital marketing strategy. The results have been nothing short of remarkable.
+In the competitive roofing industry, establishing a strong online presence is crucial for attracting new customers and growing a business. [AMP Roofing LLC](https://www.amproofingllc.com/), a leading Rhode Island roofing contractor, recognized this need and partnered with our [Providence SEO Company](https://amentiai.com) to transform their digital marketing strategy. The results have been nothing short of remarkable.
 
 ## The Challenge
 
-Before working with Amenti AI, AMP Roofing faced several digital marketing challenges common to many local service businesses:
+Before working with us, AMP Roofing faced several digital marketing challenges common to many local service businesses:
 
 - Limited online visibility in local search results
 - An outdated website that wasn't optimized for mobile devices
@@ -143,9 +206,9 @@ Before working with Amenti AI, AMP Roofing faced several digital marketing chall
 
 "We knew we needed to improve our online presence, but we weren't sure where to start," explains Michael Anderson, Owner of AMP Roofing LLC. "As roofing professionals, our expertise is in providing quality roofing services, not digital marketing."
 
-## The Amenti AI Solution
+## The Solution
 
-After a comprehensive digital audit, [Amenti AI](https://www.amentiai.com/) developed a customized digital marketing strategy for AMP Roofing that addressed their specific needs and goals:
+After a comprehensive digital audit, we developed a customized digital marketing strategy for AMP Roofing that addressed their specific needs and goals:
 
 ### Website Redesign and Optimization
 
@@ -153,7 +216,7 @@ The first step was a complete website redesign focused on user experience, mobil
 
 ### Local SEO Campaign
 
-Amenti AI implemented a comprehensive local SEO strategy to improve AMP Roofing's visibility in Rhode Island search results. This included:
+We implemented a comprehensive local SEO strategy to improve AMP Roofing's visibility in Rhode Island search results. This included:
 
 - Optimizing for location-specific keywords
 - Creating and optimizing Google Business Profile
@@ -166,7 +229,7 @@ A content strategy was developed to establish AMP Roofing as an authority in the
 
 ### Review Management
 
-Amenti AI implemented a systematic approach to generating and managing customer reviews, helping AMP Roofing build a stellar online reputation.
+We implemented a systematic approach to generating and managing customer reviews, helping AMP Roofing build a stellar online reputation.
 
 ## The Results
 
@@ -178,11 +241,11 @@ Within six months of implementing the new digital marketing strategy, AMP Roofin
 - Average Google review rating improved from 4.2 to 4.8 stars
 - Substantial growth in social media following and engagement
 
-"The impact on our business has been tremendous," says Anderson. "We're now getting consistent, high-quality leads through our website, and many new customers mention they found us through Google searches. Amenti AI has truly transformed our digital presence and helped us grow our business."
+"The impact on our business has been tremendous," says Anderson. "We're now getting consistent, high-quality leads through our website, and many new customers mention they found us through Google searches. Our digital presence has truly been transformed and helped us grow our business."
 
 ## AMP Roofing's Comprehensive Services
 
-As part of their digital transformation, Amenti AI helped AMP Roofing clearly communicate their comprehensive service offerings to potential customers. AMP Roofing provides a wide range of roofing services to residential and commercial clients throughout Rhode Island:
+As part of their digital transformation, we helped AMP Roofing clearly communicate their comprehensive service offerings to potential customers. AMP Roofing provides a wide range of roofing services to residential and commercial clients throughout Rhode Island:
 
 ### Residential Roofing
 
@@ -208,24 +271,24 @@ Rhode Island weather can be unpredictable, and roof damage often requires immedi
 
 The success of AMP Roofing's digital transformation highlights the importance of a strategic online presence for local service businesses. In today's digital-first world, potential customers are increasingly turning to online searches to find local service providers.
 
-"Many local businesses underestimate the impact that effective digital marketing can have on their growth," explains the team at [Amenti AI](https://www.amentiai.com/). "With the right strategy, even small local businesses can compete effectively online and reach new customers they wouldn't have connected with otherwise."
+"Many local businesses underestimate the impact that effective digital marketing can have on their growth," explains our team. "With the right strategy, even small local businesses can compete effectively online and reach new customers they wouldn't have connected with otherwise."
 
-For AMP Roofing, the partnership with Amenti AI has not only increased their visibility but has also helped them better communicate their value proposition to potential customers. By clearly showcasing their expertise, quality workmanship, and commitment to customer satisfaction, they've been able to attract more of their ideal clients.
+For AMP Roofing, the partnership has not only increased their visibility but has also helped them better communicate their value proposition to potential customers. By clearly showcasing their expertise, quality workmanship, and commitment to customer satisfaction, they've been able to attract more of their ideal clients.
 
 ## Looking to the Future
 
-Building on their digital marketing success, AMP Roofing continues to work with Amenti AI to refine and expand their online strategy. Future plans include:
+Building on their digital marketing success, AMP Roofing continues to refine and expand their online strategy. Future plans include:
 
 - Expanding their service area to new Rhode Island communities
 - Implementing targeted PPC advertising campaigns for specific services
 - Developing video content showcasing their projects and expertise
 - Creating a customer portal for easier communication and project updates
 
-"Our partnership with Amenti AI has been transformative for our business," concludes Anderson. "We're excited to continue growing our online presence and connecting with more Rhode Island homeowners and businesses who need quality roofing services."
+"Our partnership has been transformative for our business," concludes Anderson. "We're excited to continue growing our online presence and connecting with more Rhode Island homeowners and businesses who need quality roofing services."
 
 ## Is Your Rhode Island Business Ready for a Digital Transformation?
 
-If you're a Rhode Island business looking to improve your online presence and attract more customers, the success of AMP Roofing shows what's possible with the right digital marketing strategy. [Contact Amenti AI](https://www.amentiai.com/#contact) today to learn how they can help transform your digital presence and grow your business.
+If you're a Rhode Island business looking to improve your online presence and attract more customers, the success of AMP Roofing shows what's possible with the right digital marketing strategy. Contact us today to learn how we can help transform your digital presence and grow your business.
     `,
   },
   {
@@ -239,53 +302,53 @@ If you're a Rhode Island business looking to improve your online presence and at
     content: `
 # Amenti AI: Revolutionizing Digital Marketing in Providence
 
-In the rapidly evolving digital landscape, [Amenti AI](https://amentiai.com) stands out as a pioneering force in the Rhode Island marketing scene. Based in Providence, this innovative company is changing how local businesses approach their digital marketing strategies through cutting-edge AI technology and deep local expertise.
+In the rapidly evolving digital landscape, our [Digital Marketing Providence RI](https://amentiai.com) team stands out as a pioneering force in the Rhode Island marketing scene. Based in Providence, we're changing how local businesses approach their digital marketing strategies through cutting-edge AI technology and deep local expertise.
 
-## The Amenti AI Difference
+## The Difference
 
-Amenti AI isn't just another marketing agency. What sets them apart is their unique blend of advanced artificial intelligence capabilities and intimate knowledge of the Providence business environment. This powerful combination allows them to deliver results that many traditional agencies simply cannot match.
+We aren't just another marketing agency. What sets us apart is our unique blend of advanced artificial intelligence capabilities and intimate knowledge of the Providence business environment. This powerful combination allows us to deliver results that many traditional agencies simply cannot match.
 
-Founded with the mission to make sophisticated marketing technology accessible to businesses of all sizes, Amenti AI has quickly established itself as a leader in the Rhode Island digital marketing space. Their team of experts combines technical prowess with creative thinking to develop strategies that drive real business growth.
+Founded with the mission to make sophisticated marketing technology accessible to businesses of all sizes, we've quickly established ourselves as leaders in the Rhode Island digital marketing space. Our team of experts combines technical prowess with creative thinking to develop strategies that drive real business growth.
 
 ## Comprehensive Digital Marketing Services
 
-Amenti AI offers a full spectrum of digital marketing services tailored specifically for the unique needs of Rhode Island businesses:
+We offer a full spectrum of digital marketing services tailored specifically for the unique needs of Rhode Island businesses:
 
 ### Search Engine Optimization (SEO)
 
-Their Providence SEO services go beyond basic keyword optimization. Using proprietary AI tools, Amenti analyzes search patterns specific to the Rhode Island market, identifying opportunities that competitors often miss. This data-driven approach has helped numerous local businesses achieve first-page rankings for competitive keywords.
+Our Providence SEO services go beyond basic keyword optimization. Using proprietary AI tools, we analyze search patterns specific to the Rhode Island market, identifying opportunities that competitors often miss. This data-driven approach has helped numerous local businesses achieve first-page rankings for competitive keywords.
 
 ### Web Design and Development
 
-The web design team at Amenti AI creates stunning, functional websites that not only look great but also convert visitors into customers. Each site is built with both user experience and search engine performance in mind, ensuring businesses get maximum value from their online presence.
+Our web design team creates stunning, functional websites that not only look great but also convert visitors into customers. Each site is built with both user experience and search engine performance in mind, ensuring businesses get maximum value from their online presence.
 
 ### Social Media Marketing
 
-Understanding the unique social media landscape of Providence and surrounding communities allows Amenti's social media specialists to create campaigns that resonate with local audiences. Their AI-powered content analysis tools help identify trending topics and optimal posting times specific to Rhode Island users.
+Understanding the unique social media landscape of Providence and surrounding communities allows our social media specialists to create campaigns that resonate with local audiences. Our AI-powered content analysis tools help identify trending topics and optimal posting times specific to Rhode Island users.
 
 ### PPC Advertising
 
-The PPC management services offered by Amenti AI leverage advanced algorithms to optimize ad spend and targeting. This ensures Rhode Island businesses reach the right local customers at the right time, maximizing return on investment.
+Our PPC management services leverage advanced algorithms to optimize ad spend and targeting. This ensures Rhode Island businesses reach the right local customers at the right time, maximizing return on investment.
 
 ## Local Success Stories
 
-Amenti AI has helped numerous Providence businesses transform their digital presence and achieve remarkable growth:
+We've helped numerous Providence businesses transform their digital presence and achieve remarkable growth:
 
-- A local Providence restaurant saw a 215% increase in online reservations after implementing Amenti's local SEO and social media strategy
-- A Rhode Island law firm doubled their qualified leads within three months of launching their new Amenti-designed website and PPC campaign
-- A Newport retail business expanded to two new locations after Amenti's digital marketing efforts increased their foot traffic by 180%
+- A local Providence restaurant saw a 215% increase in online reservations after implementing our local SEO and social media strategy
+- A Rhode Island law firm doubled their qualified leads within three months of launching their new website and PPC campaign
+- A Newport retail business expanded to two new locations after our digital marketing efforts increased their foot traffic by 180%
 
 ## The Providence Advantage
 
-Being headquartered in Providence gives Amenti AI a distinct advantage when working with Rhode Island businesses. Their team intimately understands the local market dynamics, consumer behaviors, and competitive landscape that shape business success in the Ocean State.
+Being headquartered in Providence gives us a distinct advantage when working with Rhode Island businesses. Our team intimately understands the local market dynamics, consumer behaviors, and competitive landscape that shape business success in the Ocean State.
 
-"We're proud to be part of the Providence business community," says the Amenti AI team. "Our roots here give us insights that out-of-state agencies simply don't have. We know what works in Rhode Island because we live and work here too."
+"We're proud to be part of the Providence business community," says our team. "Our roots here give us insights that out-of-state agencies simply don't have. We know what works in Rhode Island because we live and work here too."
 
-This local knowledge is particularly valuable for businesses targeting specific neighborhoods or communities within the state. Amenti's hyperlocal approach ensures marketing efforts speak directly to the intended audience with relevant, compelling messaging.
+This local knowledge is particularly valuable for businesses targeting specific neighborhoods or communities within the state. Our hyperlocal approach ensures marketing efforts speak directly to the intended audience with relevant, compelling messaging.
 
 ## AI-Powered Analytics
 
-One of the most powerful tools in Amenti AI's arsenal is their proprietary analytics platform. This sophisticated system goes beyond standard metrics to provide deep insights into customer behavior and campaign performance.
+One of the most powerful tools in our arsenal is our proprietary analytics platform. This sophisticated system goes beyond standard metrics to provide deep insights into customer behavior and campaign performance.
 
 For Rhode Island businesses, this means:
 
@@ -296,19 +359,17 @@ For Rhode Island businesses, this means:
 
 ## The Future of Marketing in Rhode Island
 
-As digital marketing continues to evolve, Amenti AI remains at the forefront of innovation in the Providence area. Their commitment to staying ahead of industry trends ensures clients benefit from the latest strategies and technologies.
+As digital marketing continues to evolve, we remain at the forefront of innovation in the Providence area. Our commitment to staying ahead of industry trends ensures clients benefit from the latest strategies and technologies.
 
-"The marketing landscape is changing faster than ever," notes the Amenti team. "What worked yesterday might not work tomorrow. Our AI-powered approach allows us to adapt quickly, identifying new opportunities for our clients before their competitors even know they exist."
+"The marketing landscape is changing faster than ever," notes our team. "What worked yesterday might not work tomorrow. Our AI-powered approach allows us to adapt quickly, identifying new opportunities for our clients before their competitors even know they exist."
 
-For Rhode Island businesses looking to grow their digital presence, Amenti AI offers a powerful combination of technological sophistication and local expertise. Their data-driven strategies, creative thinking, and commitment to client success have established them as the premier digital marketing partner for Providence businesses.
+For Rhode Island businesses looking to grow their digital presence, we offer a powerful combination of technological sophistication and local expertise. Our data-driven strategies, creative thinking, and commitment to client success have established us as the premier digital marketing partner for Providence businesses.
 
-## Getting Started with Amenti AI
+## Getting Started
 
-Businesses interested in working with Amenti AI can begin with a comprehensive digital audit. This in-depth analysis examines current online performance and identifies specific opportunities for improvement.
+Businesses interested in working with us can begin with a comprehensive digital audit. This in-depth analysis examines current online performance and identifies specific opportunities for improvement.
 
-To learn more about how Amenti AI is revolutionizing digital marketing in Providence or to schedule a consultation, visit their website or call their Providence office directly.
-
-In a digital world where standing out is increasingly difficult, Amenti AI is helping Rhode Island businesses not just compete, but truly excel. Their innovative approach to digital marketing in Providence is setting a new standard for what businesses can expect from their marketing partners.
+In a digital world where standing out is increasingly difficult, we're helping Rhode Island businesses not just compete, but truly excel. Our innovative approach to digital marketing in Providence is setting a new standard for what businesses can expect from their marketing partners.
     `,
   },
   {
@@ -355,9 +416,7 @@ Beyond local optimization, Rhode Island businesses should focus on these technic
 
 ## Need Professional SEO Help?
 
-Implementing effective SEO strategies in Providence RI takes time and expertise. If you're looking for professional assistance with your Rhode Island business's SEO strategy, [contact the team at Amentia AI](https://amentiai.com/#contact) for a free consultation.
-
-Our Rhode Island SEO experts understand the local market and can help your business achieve sustainable growth through targeted search engine optimization.
+Implementing effective SEO strategies in Providence RI takes time and expertise. If you're looking for professional assistance with your Rhode Island business's SEO strategy, our [Rhode Island SEO](https://amentiai.com) experts understand the local market and can help your business achieve sustainable growth through targeted search engine optimization.
     `,
   },
   {
@@ -412,9 +471,7 @@ Track these key metrics to evaluate your social media performance:
 
 ## Need Professional Social Media Management?
 
-Managing effective social media marketing in Providence takes consistent effort and strategic planning. If you're looking for expert help with your Rhode Island business's social media presence, [contact Amentia AI](https://amentiai.com/#contact) for a consultation.
-
-Their social media specialists understand the Rhode Island market and can help your business build meaningful connections with local customers.
+Managing effective social media marketing in Providence takes consistent effort and strategic planning. If you're looking for expert help with your Rhode Island business's social media presence, our [Social Media Marketing RI](https://amentiai.com) team understands the Rhode Island market and can help your business build meaningful connections with local customers.
     `,
   },
   {
@@ -489,9 +546,7 @@ Implement these automated email sequences to nurture relationships with minimal 
 
 ## Need Professional Email Marketing Help?
 
-Creating and maintaining effective email marketing campaigns in Providence requires consistent effort and strategic planning. If you're looking for expert help with your Rhode Island business's email marketing, [visit Amentia AI](https://amentiai.com/#contact) for a consultation.
-
-Their digital marketing experts in Rhode Island understand the local market and can help your business build meaningful connections with local customers through targeted email campaigns.
+Creating and maintaining effective email marketing campaigns in Providence requires consistent effort and strategic planning. If you're looking for expert help with your Rhode Island business's email marketing, our [Marketing Agency Providence RI](https://amentiai.com) team understands the local market and can help your business build meaningful connections with local customers through targeted email campaigns.
     `,
   },
   {
@@ -576,9 +631,7 @@ Where you send your traffic matters as much as the ads themselves:
 
 ## Need Professional PPC Management?
 
-Managing effective PPC advertising in Rhode Island requires ongoing optimization and strategic planning. If you're looking for expert help with your Rhode Island business's PPC advertising, [explore Amentia AI's services](https://amentiai.com/#contact) for a consultation.
-
-Their PPC specialists in Providence understand the Rhode Island market and can help your business reach the right local customers while maximizing your advertising budget.
+Managing effective PPC advertising in Rhode Island requires ongoing optimization and strategic planning. If you're looking for expert help with your Rhode Island business's PPC advertising, our [PPC Management Providence](https://amentiai.com) specialists understand the Rhode Island market and can help your business reach the right local customers while maximizing your advertising budget.
     `,
   },
   {
@@ -669,9 +722,7 @@ Turn website visitors into customers with these elements:
 
 ## Need Professional Web Design Help?
 
-Creating an effective website that attracts and converts Rhode Island customers requires both technical expertise and local market knowledge. For expert help with your Rhode Island business's web presence, [check out Amentia AI](https://amentiai.com/#contact) for a consultation.
-
-Their web design experts in Providence understand the Rhode Island market and can help your business create a website that effectively connects with local customers and drives growth.
+Creating an effective website that attracts and converts Rhode Island customers requires both technical expertise and local market knowledge. For expert help with your Rhode Island business's web presence, our [Rhode Island Web Development](https://amentiai.com) team understands the local market and can help your business create a website that effectively connects with local customers and drives growth.
     `,
   },
   {
@@ -770,9 +821,7 @@ Track these metrics to evaluate your content marketing success:
 
 ## Need Professional Content Marketing Help?
 
-Creating and maintaining an effective content marketing strategy in Rhode Island requires consistent effort and local expertise. If you're looking for help with your Rhode Island business's content marketing, [reach out to Amentia AI](https://amentiai.com/#contact) for a consultation.
-
-Their content marketing specialists in Providence understand the Rhode Island market and can help your business create content that resonates with local audiences and drives meaningful results.
+Creating and maintaining an effective content marketing strategy in Rhode Island requires consistent effort and local expertise. If you're looking for help with your Rhode Island business's content marketing, our [Content Marketing Providence](https://amentiai.com) specialists understand the Rhode Island market and can help your business create content that resonates with local audiences and drives meaningful results.
     `,
   },
   {
@@ -785,7 +834,7 @@ Their content marketing specialists in Providence understand the Rhode Island ma
     content: `
 # Local Business Directory Listings for Rhode Island Companies
 
-For Rhode Island businesses, being listed in the right online directories is essential for local visibility. These listings help potential customers find your business and can significantly improve your local SEO performance. Here's how to maximize your Rhode Island business visibility with strategic directory listings.
+For businesses operating in Rhode Island, being listed in the right online directories is essential for local visibility. These listings help potential customers find your business and can significantly improve your local SEO performance. Here's how to maximize your Rhode Island business visibility with strategic directory listings.
 
 ## Essential Directories for Rhode Island Businesses
 
@@ -901,9 +950,7 @@ Track these metrics to evaluate the performance of your business directory listi
 
 ## Need Professional Help with Local Listings?
 
-Managing effective directory listings across multiple platforms requires consistent effort and local expertise. If you're looking for help optimizing your Rhode Island business's online presence, [partner with Amentia AI](https://amentiai.com/#contact) for a consultation.
-
-Their local SEO specialists in Providence understand the Rhode Island market and can help your business maximize visibility across all relevant directories.
+Managing effective directory listings across multiple platforms requires consistent effort and local expertise. If you're looking for help optimizing your Rhode Island business's online presence, our [Local Business SEO RI](https://amentiai.com) specialists understand the Rhode Island market and can help your business maximize visibility across all relevant directories.
     `,
   },
   // Add these after the last real blog post but before the placeholder array
@@ -918,7 +965,7 @@ Their local SEO specialists in Providence understand the Rhode Island market and
     content: `
 # Providence SEO Company: Boosting Your Local Business Online
 
-For businesses in Providence, Rhode Island, appearing prominently in local search results is essential for attracting new customers and growing your business. A professional [Providence SEO company](https://amentiai.com/) can help you achieve higher rankings, increased traffic, and more conversions through targeted search engine optimization strategies.
+For businesses in Providence, Rhode Island, appearing prominently in local search results is essential for attracting new customers and growing your business. A professional [Best SEO Agency RI](https://amentiai.com) can help you achieve higher rankings, increased traffic, and more conversions through targeted search engine optimization strategies.
 
 ## Why Providence Businesses Need Specialized SEO
 
@@ -977,7 +1024,7 @@ Investing in professional SEO services provides long-term benefits for Providenc
 
 ## Ready to Improve Your Providence SEO?
 
-If you're ready to take your Providence business to the next level with professional SEO services, [contact Amenti AI](https://amentiai.com/#contact) today for a free consultation. Our team of Rhode Island SEO experts can help you develop a customized strategy to improve your visibility, attract more customers, and grow your business.
+If you're ready to take your Providence business to the next level with professional SEO services, contact us today for a free consultation. Our team of Rhode Island SEO experts can help you develop a customized strategy to improve your visibility, attract more customers, and grow your business.
     `,
   },
   {
@@ -1002,7 +1049,7 @@ Your website is more than just an online brochure—it's a powerful marketing to
 - Represent your brand professionally
 - Outperform your competitors' online presence
 
-Professional [website design in Providence, RI](https://amentiai.com/services/web-design) combines aesthetic appeal with strategic functionality to achieve these goals.
+Professional [Affordable Web Design RI](https://amentiai.com) combines aesthetic appeal with strategic functionality to achieve these goals.
 
 ## Key Elements of Effective Providence Website Design
 
@@ -1055,7 +1102,7 @@ Your Providence website should be designed with search engines in mind:
 
 ## The Website Design Process for Rhode Island Businesses
 
-At [Amenti AI](https://amentiai.com/), our website design process for Providence businesses follows a proven methodology:
+Our website design process for Providence businesses follows a proven methodology:
 
 ### 1. Discovery
 
@@ -1113,7 +1160,7 @@ When selecting a website design company in Providence, consider:
 
 ## Ready to Transform Your Providence Business Website?
 
-If you're ready to elevate your online presence with professional website design, [contact Amenti AI](https://amentiai.com/#contact) today for a free consultation. Our team of Providence web design experts can help you create a website that not only looks great but drives real business results.
+If you're ready to elevate your online presence with professional website design, contact us today for a free consultation. Our team of Providence web design experts can help you create a website that not only looks great but drives real business results.
     `,
   },
   {
@@ -1138,7 +1185,7 @@ The digital marketing environment in Providence presents unique opportunities an
 - The strong community connections create word-of-mouth opportunities
 - The competitive market requires standing out from local competitors
 
-A comprehensive [digital marketing strategy in Providence, RI](https://amentiai.com/) must account for these factors to be truly effective.
+A comprehensive [Online Marketing Services RI](https://amentiai.com) strategy must account for these factors to be truly effective.
 
 ## Essential Digital Marketing Services for Providence Businesses
 
@@ -1224,7 +1271,7 @@ When selecting a digital marketing partner for your Providence business, look fo
 
 ## Ready to Transform Your Providence Digital Marketing?
 
-If you're ready to take your Rhode Island business to the next level with professional digital marketing services, [contact Amenti AI](https://amentiai.com/#contact) today for a free consultation. Our team of Providence digital marketing experts can help you develop a customized strategy to improve your visibility, attract more customers, and grow your business.
+If you're ready to take your Rhode Island business to the next level with professional digital marketing services, contact us today for a free consultation. Our team of Providence digital marketing experts can help you develop a customized strategy to improve your visibility, attract more customers, and grow your business.
     `,
   },
   {
@@ -1237,7 +1284,7 @@ If you're ready to take your Rhode Island business to the next level with profes
     content: `
 # SEO Services Rhode Island: Dominate Local Search Results
 
-For businesses operating in Rhode Island, appearing prominently in local search results is essential for attracting new customers and growing your business. Professional [SEO services in Rhode Island](https://amentiai.com/) can help you achieve higher rankings, increased traffic, and more conversions through targeted search engine optimization strategies.
+For businesses operating in Rhode Island, appearing prominently in local search results is essential for attracting new customers and growing your business. Professional [Search Engine Optimization Providence](https://amentiai.com) services can help you achieve higher rankings, increased traffic, and more conversions through targeted search engine optimization strategies.
 
 ## The Value of Local SEO for Rhode Island Businesses
 
@@ -1299,7 +1346,7 @@ Building authority and relevance through:
 
 ## The SEO Process for Rhode Island Businesses
 
-At [Amenti AI](https://amentiai.com/), our Rhode Island SEO services follow a proven methodology:
+Our Rhode Island SEO services follow a proven methodology:
 
 ### 1. Comprehensive Audit
 
@@ -1372,7 +1419,7 @@ When selecting an SEO company for your Rhode Island business, consider:
 
 ## Ready to Improve Your Rhode Island SEO?
 
-If you're ready to enhance your online visibility and attract more local customers through professional SEO services, [contact Amenti AI](https://amentiai.com/#contact) today for a free consultation. Our team of Rhode Island SEO experts can help you develop a customized strategy to improve your rankings, drive more traffic, and grow your business.
+If you're ready to enhance your online visibility and attract more local customers through professional SEO services, contact us today for a free consultation. Our team of Rhode Island SEO experts can help you develop a customized strategy to improve your rankings, drive more traffic, and grow your business.
     `,
   },
   {
@@ -1397,7 +1444,7 @@ The Providence market presents unique opportunities and challenges that make loc
 - Proximity to other Rhode Island communities expands your potential reach
 - Tourism in Providence creates opportunities to capture visitor searches
 
-Professional [local SEO services in Providence, RI](https://amentiai.com/) help you navigate these factors and maximize your visibility.
+Professional [SEO Consultant Rhode Island](https://amentiai.com) services help you navigate these factors and maximize your visibility.
 
 ## Essential Local SEO Strategies for Providence Businesses
 
@@ -1456,7 +1503,7 @@ Content that addresses local interests and concerns:
 
 ## The Local SEO Process for Providence Businesses
 
-At [Amenti AI](https://amentiai.com/), our local SEO process includes:
+Our local SEO process includes:
 
 ### 1. Local Presence Audit
 
@@ -1526,7 +1573,7 @@ While some local SEO tactics seem straightforward, professional management offer
 
 ## Ready to Improve Your Providence Local SEO?
 
-If you're ready to enhance your local visibility and attract more Providence customers, [contact Amenti AI](https://amentiai.com/#contact) today for a free local SEO consultation. Our team of Providence digital marketing experts can help you develop a customized strategy to improve your local rankings and grow your business.
+If you're ready to enhance your local visibility and attract more Providence customers, contact us today for a free local SEO consultation. Our team of Providence digital marketing experts can help you develop a customized strategy to improve your local rankings and grow your business.
     `,
   },
   // Add a dynamic blog post generator for keywords

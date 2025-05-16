@@ -214,12 +214,12 @@ export default function Footer() {
 
           <p className="text-gray-600 dark:text-gray-400">
             &copy; 2025 RIMarketTrends.com. powered by{" "}
-            <a
-              href="https://amentiai.com"
+            <Link
+              href="/blog/providence-seo-company"
               className="text-primary hover:text-primary/80 transition-colors duration-200"
             >
               Amenti AI
-            </a>
+            </Link>
           </p>
         </div>
       </div>

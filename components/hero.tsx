@@ -11,7 +11,8 @@ export default function Hero() {
         <Image
           src={
             heroBackgroundImage ||
-            "/placeholder.svg?height=1200&width=1600&query=Providence%20Rhode%20Island%20skyline%20night"
+            "/placeholder.svg?height=1200&width=1600&query=Providence%20Rhode%20Island%20skyline%20night" ||
+            "/placeholder.svg"
           }
           alt="Providence, Rhode Island skyline at night"
           fill
@@ -49,7 +50,7 @@ export default function Hero() {
                 variant="outline"
                 className="bg-white/20 border-white text-white hover:bg-white/30"
               >
-                <Link href="https://amentiai.com/contact">Get a Free Consultation</Link>
+                <Link href="/contact">Get a Free Consultation</Link>
               </Button>
             </div>
           </div>

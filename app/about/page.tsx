@@ -294,7 +294,7 @@ export default function AboutPage() {
               </ul>
               <div className="mt-10">
                 <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-all duration-300">
-                  <Link href="https://amentiai.com/#contact">Schedule a Free Consultation</Link>
+                  <Link href="/contact">Get a Free Consultation</Link>
                 </Button>
               </div>
             </div>
