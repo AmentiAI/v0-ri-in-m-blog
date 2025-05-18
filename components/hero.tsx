@@ -6,15 +6,19 @@ export default function Hero() {
   const heroBackgroundImage = "/images/providence-night.png"
 
   return (
-    <section className="pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-32 relative overflow-hidden">
+    <section
+      className="pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-32 relative overflow-hidden"
+      aria-label="Hero Section"
+    >
       <div className="absolute inset-0 z-0">
         <Image
           src={
             heroBackgroundImage ||
             "/placeholder.svg?height=1200&width=1600&query=Providence%20Rhode%20Island%20skyline%20night" ||
+            "/placeholder.svg" ||
             "/placeholder.svg"
           }
-          alt="Providence, Rhode Island skyline at night"
+          alt="Providence, Rhode Island skyline at night - home of RIMarketTrends digital marketing experts"
           fill
           className="object-cover"
           priority
@@ -40,7 +44,7 @@ export default function Hero() {
               Expert strategies and actionable tips to help Rhode Island businesses succeed in the digital landscape
             </p>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <div className="flex flex-col sm:flex-row justify-center gap-4" role="navigation" aria-label="Primary">
               <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100">
                 <Link href="/blog">Explore Insights</Link>
               </Button>

@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Twitter } from "lucide-react"
 import React from "react"
+import Script from "next/script"
 
 export default function Footer() {
   // Function to convert keyword to URL slug
@@ -14,9 +15,24 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 pt-16 border-t border-gray-200 dark:border-gray-800">
+      <Script
+        id="footer-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WPFooter",
+            copyrightYear: "2025",
+            copyrightHolder: {
+              "@type": "Organization",
+              name: "RIMarketTrends.com",
+            },
+          }),
+        }}
+      />
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          <div className="space-y-4">
+          <section className="space-y-4" aria-label="About RIMarketTrends">
             <Link href="/" className="inline-block mb-4">
               <div className="relative w-[450px] h-[110px]">
                 <Image
@@ -44,9 +60,9 @@ export default function Footer() {
                 <Twitter size={20} />
               </a>
             </div>
-          </div>
+          </section>
 
-          <div>
+          <nav aria-label="Quick Links">
             <h3 className="font-semibold text-lg mb-4 dark:text-white">Quick Links</h3>
             <ul className="space-y-3">
               <li>
@@ -82,9 +98,9 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
-          <div>
+          <nav aria-label="Services">
             <h3 className="font-semibold text-lg mb-4 dark:text-white">Services</h3>
             <ul className="space-y-3">
               <li>
@@ -120,9 +136,9 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-          </div>
+          </nav>
 
-          <div>
+          <section aria-label="Contact Information">
             <h3 className="font-semibold text-lg mb-4 dark:text-white">Contact</h3>
             <address className="not-italic text-gray-600 dark:text-gray-400 space-y-3">
               <p>123 Main Street</p>
@@ -144,11 +160,15 @@ export default function Footer() {
                 </a>
               </p>
             </address>
-          </div>
+          </section>
         </div>
 
         {/* Keywords Section */}
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+        <section
+          className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center"
+          aria-label="Related Topics"
+        >
+          <h4 className="sr-only">Related Topics</h4>
           <div className="flex flex-wrap justify-center gap-x-3 gap-y-2 mb-8 text-xs text-gray-500 dark:text-gray-400">
             {[
               "Providence SEO Company",
@@ -213,7 +233,7 @@ export default function Footer() {
           </div>
 
           <p className="text-gray-600 dark:text-gray-400">
-            &copy; 2025 RIMarketTrends.com. powered by{" "}
+            &copy; <time dateTime="2025">2025</time> RIMarketTrends.com. powered by{" "}
             <Link
               href="/blog/providence-seo-company"
               className="text-primary hover:text-primary/80 transition-colors duration-200"
@@ -221,7 +241,7 @@ export default function Footer() {
               Amenti AI
             </Link>
           </p>
-        </div>
+        </section>
       </div>
     </footer>
   )

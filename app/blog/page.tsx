@@ -1,3 +1,5 @@
+import type { Metadata } from "next"
+import Script from "next/script"
 import { blogPosts } from "@/lib/utils"
 import BlogCard from "@/components/blog-card"
 import Newsletter from "@/components/newsletter"
@@ -5,11 +7,68 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+export const metadata: Metadata = {
+  title: "Marketing Insights | Rhode Island Digital Marketing Blog",
+  description:
+    "Expert marketing insights and strategies for Rhode Island businesses. Learn about SEO, social media, content marketing, and more from local experts.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Marketing Insights | Rhode Island Digital Marketing Blog",
+    description:
+      "Expert marketing insights and strategies for Rhode Island businesses. Learn about SEO, social media, content marketing, and more from local experts.",
+    url: "https://rimarkettrends.com/blog",
+    type: "website",
+    images: [
+      {
+        url: "/images/providence-night.png",
+        width: 1200,
+        height: 630,
+        alt: "Providence, Rhode Island skyline at night",
+      },
+    ],
+  },
+}
+
 export default function BlogPage() {
   const newportHarborImage = "/images/providence-night.png"
 
   return (
     <div className="pt-0 pb-20">
+      <Script
+        id="blog-listing-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Rhode Island Marketing Insights",
+            description: "Expert marketing insights and strategies for Rhode Island businesses.",
+            url: "https://rimarkettrends.com/blog",
+            publisher: {
+              "@type": "Organization",
+              name: "RIMarketTrends.com",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://rimarkettrends.com/images/rimarket-trends-logo.png",
+              },
+            },
+            blogPosts: blogPosts.map((post) => ({
+              "@type": "BlogPosting",
+              headline: post.title,
+              description: post.description,
+              datePublished: post.date,
+              url: `https://rimarkettrends.com/blog/${post.slug}`,
+              image: post.imageUrl,
+              author: {
+                "@type": "Organization",
+                name: "RIMarketTrends.com",
+              },
+            })),
+          }),
+        }}
+      />
       <div className="m-0 p-0">
         {/* Navigation Menu */}
         <div className="flex justify-between items-start p-0 m-0">

@@ -1,18 +1,82 @@
+import type { Metadata } from "next"
+import Script from "next/script"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Newsletter from "@/components/newsletter"
 import { CheckCircle2 } from "lucide-react"
 
+export const metadata: Metadata = {
+  title: "About RIMarketTrends.com | Rhode Island Marketing Experts",
+  description:
+    "Learn about RIMarketTrends.com, Rhode Island's premier digital marketing resource. Our team of experts specializes in helping Ocean State businesses succeed online.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About RIMarketTrends.com | Rhode Island Marketing Experts",
+    description:
+      "Learn about RIMarketTrends.com, Rhode Island's premier digital marketing resource. Our team of experts specializes in helping Ocean State businesses succeed online.",
+    url: "https://rimarkettrends.com/about",
+    type: "website",
+    images: [
+      {
+        url: "/images/newport-bridge.png",
+        width: 1200,
+        height: 630,
+        alt: "Newport Bridge, Rhode Island - iconic landmark connecting Newport and Jamestown",
+      },
+    ],
+  },
+}
+
 export default function AboutPage() {
   // Use high-quality professional images
-  const providenceSkylineImage =
-    "https://images.pexels.com/photos/2525903/pexels-photo-2525903.jpeg?auto=compress&cs=tinysrgb&w=2000&dpr=1"
+  const newportBridgeImage = "/images/newport-bridge.png"
   const marketingTeamImage =
     "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=2000&dpr=1"
 
   return (
     <div className="pt-0 pb-20">
+      <Script
+        id="about-page-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            name: "About RIMarketTrends.com",
+            description: "Learn about RIMarketTrends.com, Rhode Island's premier digital marketing resource.",
+            url: "https://rimarkettrends.com/about",
+            mainEntity: {
+              "@type": "Organization",
+              name: "RIMarketTrends.com",
+              description: "Rhode Island Internet Marketing Experts",
+              url: "https://rimarkettrends.com",
+              logo: "https://rimarkettrends.com/images/rimarket-trends-logo.png",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "123 Main Street",
+                addressLocality: "Providence",
+                addressRegion: "RI",
+                postalCode: "02903",
+                addressCountry: "US",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+1-401-555-1234",
+                contactType: "customer service",
+              },
+              sameAs: [
+                "https://twitter.com/rimarkettrends",
+                "https://www.facebook.com/rimarkettrends",
+                "https://www.linkedin.com/company/rimarkettrends",
+              ],
+            },
+          }),
+        }}
+      />
+      {/* Rest of the component */}
       <div className="m-0 p-0">
         {/* Navigation Menu */}
         <div className="flex justify-between items-start p-0 m-0">
@@ -87,8 +151,8 @@ export default function AboutPage() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-gray-200 dark:ring-gray-800 group">
                 <div className="aspect-[4/3] relative">
                   <Image
-                    src={providenceSkylineImage || "/placeholder.svg"}
-                    alt="Providence, Rhode Island skyline"
+                    src={newportBridgeImage || "/placeholder.svg"}
+                    alt="Newport Bridge, Rhode Island - iconic landmark connecting Newport and Jamestown"
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -97,7 +161,7 @@ export default function AboutPage() {
                 </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <p className="font-medium text-shadow">Helping Rhode Island businesses thrive online</p>
+                  <p className="font-medium text-shadow">Connecting Rhode Island businesses to digital success</p>
                 </div>
               </div>
             </div>
@@ -303,7 +367,7 @@ export default function AboutPage() {
                 <div className="aspect-[4/3] relative">
                   <Image
                     src={marketingTeamImage || "/placeholder.svg"}
-                    alt="Rhode Island marketing team collaborating"
+                    alt="Rhode Island digital marketing specialists collaborating on SEO strategy for local businesses"
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"

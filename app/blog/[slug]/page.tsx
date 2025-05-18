@@ -6,6 +6,7 @@ import { notFound } from "next/navigation"
 import SocialShare from "@/components/social-share"
 import Newsletter from "@/components/newsletter"
 import ReactMarkdown from "react-markdown"
+import Script from "next/script"
 
 interface BlogPostPageProps {
   params: {
@@ -24,6 +25,30 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
     return {
       title: `${post.title} | RIMarketTrends.com`,
       description: post.description,
+      alternates: {
+        canonical: `/blog/${slug}`,
+      },
+      openGraph: {
+        title: `${post.title} | RIMarketTrends.com`,
+        description: post.description,
+        url: `https://rimarkettrends.com/blog/${slug}`,
+        type: "article",
+        publishedTime: post.date,
+        images: [
+          {
+            url: post.imageUrl || `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(post.title)}`,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${post.title} | RIMarketTrends.com`,
+        description: post.description,
+        images: [post.imageUrl || `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(post.title)}`],
+      },
     }
   }
 
@@ -36,6 +61,23 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   return {
     title: `${title} | Expert Rhode Island Marketing Services`,
     description: `Learn about ${title} and how professional ${title} services can help your Rhode Island business grow online.`,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: `${title} | Expert Rhode Island Marketing Services`,
+      description: `Learn about ${title} and how professional ${title} services can help your Rhode Island business grow online.`,
+      url: `https://rimarkettrends.com/blog/${slug}`,
+      type: "article",
+      images: [
+        {
+          url: `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(title)}`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
   }
 }
 
@@ -77,8 +119,52 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const postImage =
     currentPost.imageUrl || `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(currentPost.title)}`
 
+  // Format the date on the server to avoid client/server mismatch
+  const formattedDate = formatDate(currentPost.date)
+
   return (
     <div className="pt-0 pb-20">
+      <Script
+        id="blog-post-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: currentPost.title,
+            description: currentPost.description,
+            image: postImage,
+            datePublished: currentPost.date,
+            dateModified: currentPost.date,
+            author: {
+              "@type": "Organization",
+              name: "RIMarketTrends.com",
+              url: "https://rimarkettrends.com",
+            },
+            publisher: {
+              "@type": "Organization",
+              name: "RIMarketTrends.com",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://rimarkettrends.com/images/rimarket-trends-logo.png",
+              },
+            },
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `https://rimarkettrends.com/blog/${params.slug}`,
+            },
+            keywords: [
+              "Rhode Island marketing",
+              "digital marketing",
+              "SEO",
+              "content marketing",
+              "Providence marketing",
+              params.slug.replace(/-/g, " "),
+            ],
+          }),
+        }}
+        strategy="afterInteractive"
+      />
       <div className="m-0 p-0">
         {/* Navigation Menu */}
         <div className="flex justify-between items-start p-0 m-0">
@@ -141,7 +227,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
           <div className="mb-8">
             <div className="flex items-center mb-4 text-sm">
-              <time className="text-gray-500 dark:text-gray-400">{formatDate(currentPost.date)}</time>
+              <time dateTime={currentPost.date} className="text-gray-500 dark:text-gray-400">
+                {formattedDate}
+              </time>
               <span className="mx-2 text-gray-300 dark:text-gray-600">•</span>
               <span className="text-primary dark:text-primary/80">Rhode Island Marketing</span>
             </div>

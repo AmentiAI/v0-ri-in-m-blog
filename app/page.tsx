@@ -7,6 +7,31 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import { CheckCircle2 } from "lucide-react"
+import Script from "next/script"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "RIMarketTrends.com | Rhode Island Internet Marketing Experts",
+  description:
+    "Expert digital marketing strategies for Rhode Island businesses. Specialized in local SEO, social media, and web design for Ocean State companies.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "RIMarketTrends.com | Rhode Island Internet Marketing Experts",
+    description:
+      "Expert digital marketing strategies for Rhode Island businesses. Specialized in local SEO, social media, and web design for Ocean State companies.",
+    url: "https://rimarkettrends.com",
+    images: [
+      {
+        url: "/images/providence-night.png",
+        width: 1200,
+        height: 630,
+        alt: "Providence, Rhode Island skyline at night",
+      },
+    ],
+  },
+}
 
 export default function Home() {
   // Use high-quality professional images
@@ -17,6 +42,27 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden">
+      <Script
+        id="homepage-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "RIMarketTrends.com | Rhode Island Internet Marketing Experts",
+            description:
+              "Expert digital marketing strategies for Rhode Island businesses. Specialized in local SEO, social media, and web design for Ocean State companies.",
+            url: "https://rimarkettrends.com",
+            mainEntity: {
+              "@type": "Organization",
+              name: "RIMarketTrends.com",
+              description: "Rhode Island Internet Marketing Experts",
+              url: "https://rimarkettrends.com",
+              logo: "https://rimarkettrends.com/images/rimarket-trends-logo.png",
+            },
+          }),
+        }}
+      />
       <SlideshowBanner />
       <FeaturedPosts />
 
@@ -54,7 +100,7 @@ export default function Home() {
                 <div className="aspect-[4/3] relative">
                   <Image
                     src={businessMeetingImage || "/placeholder.svg"}
-                    alt="Rhode Island marketing experts in a business meeting"
+                    alt="Providence Rhode Island marketing experts discussing digital strategy for local businesses"
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -87,7 +133,7 @@ export default function Home() {
                 <div className="aspect-[4/3] relative">
                   <Image
                     src={digitalMarketingImage || "/placeholder.svg"}
-                    alt="Rhode Island digital marketing dashboard and analytics"
+                    alt="Rhode Island SEO and digital marketing analytics dashboard showing performance metrics for local businesses"
                     fill
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 50vw"
