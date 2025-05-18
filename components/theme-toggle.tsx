@@ -6,7 +6,7 @@ import { Moon, Sun } from "lucide-react"
 import { useEffect, useState } from "react"
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme()
+  const { resolvedTheme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -14,22 +14,24 @@ export function ThemeToggle() {
   }, [])
 
   if (!mounted) {
-    return (
-      <Button variant="ghost" size="icon" className="w-9 h-9 opacity-0">
-        <Sun className="h-4 w-4" />
-      </Button>
-    )
+    // Return a placeholder with the same dimensions but no content
+    return <Button variant="ghost" size="icon" className="w-9 h-9 opacity-0" aria-hidden="true" />
   }
 
   return (
     <Button
       variant="ghost"
       size="icon"
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       className="w-9 h-9 rounded-full transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-800"
-      aria-label="Toggle theme"
+      aria-label={`Switch to ${resolvedTheme === "dark" ? "light" : "dark"} theme`}
+      suppressHydrationWarning
     >
-      {theme === "dark" ? <Sun className="h-4 w-4 animate-scale" /> : <Moon className="h-4 w-4 animate-scale" />}
+      {resolvedTheme === "dark" ? (
+        <Sun className="h-4 w-4 animate-scale" />
+      ) : (
+        <Moon className="h-4 w-4 animate-scale" />
+      )}
       <span className="sr-only">Toggle theme</span>
     </Button>
   )

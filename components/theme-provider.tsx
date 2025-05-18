@@ -12,9 +12,9 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     setMounted(true)
   }, [])
 
+  // During SSR and initial client render, provide a simple wrapper without theme-specific classes
   if (!mounted) {
-    // Return a placeholder with the same structure but without any theme-specific classes
-    return <div className="flex min-h-screen flex-col">{children}</div>
+    return <>{children}</>
   }
 
   return <NextThemesProvider {...props}>{children}</NextThemesProvider>

@@ -76,13 +76,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-        <meta name="theme-color" content="#0066cc" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen flex-col">
             <main className="flex-1">{children}</main>
@@ -90,10 +84,11 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
 
-        {/* Move scripts outside of ThemeProvider to avoid hydration issues */}
+        {/* Schema.org structured data */}
         <Script
           id="schema-org"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -121,89 +116,7 @@ export default function RootLayout({
               },
             }),
           }}
-          strategy="afterInteractive"
         />
-
-        <Script id="performance-optimization" strategy="afterInteractive">
-          {`
-            // Intersection Observer for lazy loading
-            if (typeof window !== 'undefined') {
-              document.addEventListener('DOMContentLoaded', function() {
-                const lazyImages = document.querySelectorAll('.lazy-load');
-                
-                if ('IntersectionObserver' in window) {
-                  const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                      if (entry.isIntersecting) {
-                        const img = entry.target;
-                        img.classList.add('loaded');
-                        imageObserver.unobserve(img);
-                      }
-                    });
-                  });
-                  
-                  lazyImages.forEach(img => imageObserver.observe(img));
-                }
-              });
-            }
-          `}
-        </Script>
-
-        <Script id="seo-optimization" strategy="afterInteractive">
-          {`
-            // Only run in browser
-            if (typeof window !== 'undefined') {
-              // Preconnect to important domains
-              const links = [
-                { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-                { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
-                { rel: 'preconnect', href: 'https://images.pexels.com' }
-              ];
-              
-              links.forEach(link => {
-                const linkEl = document.createElement('link');
-                Object.keys(link).forEach(attr => {
-                  linkEl[attr] = link[attr];
-                });
-                document.head.appendChild(linkEl);
-              });
-              
-              // Add structured data breadcrumbs dynamically based on current page
-              const path = window.location.pathname;
-              if (path !== '/') {
-                const segments = path.split('/').filter(Boolean);
-                const breadcrumbList = {
-                  "@context": "https://schema.org",
-                  "@type": "BreadcrumbList",
-                  "itemListElement": [
-                    {
-                      "@type": "ListItem",
-                      "position": 1,
-                      "name": "Home",
-                      "item": "https://rimarkettrends.com"
-                    }
-                  ]
-                };
-                
-                let currentPath = '';
-                segments.forEach((segment, index) => {
-                  currentPath += '/' + segment;
-                  breadcrumbList.itemListElement.push({
-                    "@type": "ListItem",
-                    "position": index + 2,
-                    "name": segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
-                    "item": "https://rimarkettrends.com" + currentPath
-                  });
-                });
-                
-                const script = document.createElement('script');
-                script.type = 'application/ld+json';
-                script.text = JSON.stringify(breadcrumbList);
-                document.head.appendChild(script);
-              }
-            }
-          `}
-        </Script>
       </body>
     </html>
   )

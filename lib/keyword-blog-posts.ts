@@ -1,68 +1,5 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-import { allBlogPosts } from "./blog-data"
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
-}
-
-// Use a consistent date format that won't change between server and client
-export function formatDate(dateString: string) {
-  // Use a fixed format that will be consistent between server and client
-  const date = new Date(dateString)
-
-  // Format manually to avoid locale differences
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ]
-
-  const day = date.getUTCDate()
-  const month = months[date.getUTCMonth()]
-  const year = date.getUTCFullYear()
-
-  return `${month} ${day}, ${year}`
-}
-
-// Default fallback image
-export function getPlaceholderImage(): string {
-  return "https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg"
-}
-
-// Generate blur placeholder data URLs
-export function getBlurDataURL(): string {
-  return "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg=="
-}
-
-// Function to convert a string to a slug
-export function slugify(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-}
-
-// Update keywordToSlug function to be consistent throughout the app
-export function keywordToSlug(keyword: string): string {
-  return keyword
-    .toLowerCase()
-    .replace(/[^\w\s]/g, "") // Remove special characters
-    .replace(/\s+/g, "-") // Replace spaces with hyphens
-}
-
-// Add function to generate dynamic content for keyword articles
-export function generateKeywordArticleContent(keyword: string): string {
+// Define the function directly in this file to avoid import issues
+function generateKeywordArticleContent(keyword: string): string {
   // Use a fixed keyword for the link to avoid hydration issues
   const linkKeyword = "Providence SEO Company"
 
@@ -121,29 +58,84 @@ If you're ready to take your Rhode Island business to the next level with profes
 `
 }
 
-// Add this helper function to generate dynamic blog post data
-export function generateDynamicBlogPost(keyword: string) {
-  const slug = keyword
-    .toLowerCase()
-    .replace(/[^\w\s]/g, "") // Remove special characters
-    .replace(/\s+/g, "-") // Replace spaces with hyphens
+// Function to get a random keyword (but deterministic to avoid hydration issues)
+function getRandomFooterKeyword(): string {
+  // Use a deterministic approach instead of random to avoid hydration issues
+  // This will return a keyword based on the current day of the month
+  const day = new Date().getUTCDate() // 1-31
+  const index = day % footerKeywords.length
+  return footerKeywords[index]
+}
 
-  // Use a fixed date to avoid hydration issues
-  const date = "2025-01-01T00:00:00Z"
+// List of footer keywords to use for amentiai.com links
+export const footerKeywords = [
+  "Providence SEO Company",
+  "Website Design Providence RI",
+  "Digital Marketing Providence RI",
+  "SEO Services Rhode Island",
+  "Local SEO Providence RI",
+  "Marketing Agency Providence RI",
+  "Rhode Island Web Development",
+  "PPC Management Providence",
+  "Social Media Marketing RI",
+  "Affordable Web Design RI",
+  "Best SEO Agency RI",
+  "Search Engine Optimization Providence",
+  "RI Small Business Marketing",
+  "Ecommerce Website Design RI",
+  "Content Marketing Providence",
+  "Providence WordPress Developer",
+  "Online Marketing Services RI",
+  "Branding Agency Providence",
+  "Westerly Rhode Island Internet Marketing",
+  "Rhode Island Internet Marketing",
+  "Connecticut Internet Marketing",
+  "Massachusetts Internet Marketing",
+  "Westerly Rhode Island SEO",
+  "Rhode Island SEO",
+  "Connecticut SEO",
+  "Massachusetts SEO",
+  "USA SEO",
+  "USA Internet Marketing",
+  "Newport RI SEO",
+  "Cranston Digital Marketing",
+  "Warwick Web Design",
+  "East Greenwich SEO Services",
+  "Pawtucket Website Development",
+  "North Kingstown Digital Agency",
+  "South County RI Marketing",
+  "Hartford CT SEO Company",
+  "Boston MA Digital Marketing",
+  "New England SEO Services",
+  "Google Ads Management RI",
+  "Facebook Ads Providence",
+  "E-commerce SEO Rhode Island",
+  "Shopify Experts Providence",
+  "WordPress SEO Rhode Island",
+  "Mobile Website Design RI",
+  "Responsive Web Design Providence",
+  "SEO Consultant Rhode Island",
+  "Local Business SEO RI",
+  "Technical SEO Services Providence",
+]
 
-  // Use a deterministic approach instead of random
-  const linkKeyword = "Providence SEO Company" // Always use the same keyword
+// Generate blog posts for each keyword
+export const keywordBlogPosts = footerKeywords.map((keyword, index) => {
+  // Create a date that's progressively earlier (starting from 2025-01-01)
+  const date = new Date("2025-01-01")
+  date.setDate(date.getDate() - index * 3) // Space them out by 3 days
 
   return {
     title: keyword,
-    slug: slug,
-    date: date,
+    slug: keyword
+      .toLowerCase()
+      .replace(/[^\w\s]/g, "")
+      .replace(/\s+/g, "-"),
+    date: date.toISOString(),
     description: `Expert ${keyword} services and strategies for Rhode Island businesses. Learn how our tailored solutions can help you grow your business.`,
     imageUrl: `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(keyword)}`,
     content: generateKeywordArticleContent(keyword),
     isDynamic: true,
-    linkKeyword: linkKeyword,
+    linkKeyword: "Providence SEO Company", // Use a fixed keyword to avoid hydration issues
   }
-}
-
-export const blogPosts = allBlogPosts
+})
