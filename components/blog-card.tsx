@@ -16,21 +16,11 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ title, description, slug, date, imageUrl, category = "Marketing" }: BlogCardProps) {
+  // Ensure we have a valid image URL
+  const imageSrc = imageUrl || "/images/digital-marketing.jpg"
   const [isInView, setIsInView] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
   const [imageError, setImageError] = useState(false)
-
-  // Default fallback image - always use this if no image or on error
-  const fallbackImage = "/images/digital-marketing.jpg"
-
-  // Normalize image path to ensure it starts with a slash
-  let normalizedImageUrl = imageUrl || fallbackImage
-  if (normalizedImageUrl && !normalizedImageUrl.startsWith("/") && !normalizedImageUrl.startsWith("http")) {
-    normalizedImageUrl = `/${normalizedImageUrl}`
-  }
-
-  // Determine the actual image to display
-  const displayImage = imageError ? fallbackImage : normalizedImageUrl
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,6 +51,9 @@ export default function BlogCard({ title, description, slug, date, imageUrl, cat
     setImageError(true)
   }
 
+  // Determine the actual image to display
+  const displayImage = imageError ? "/images/digital-marketing.jpg" : imageSrc
+
   return (
     <motion.div
       ref={cardRef}
@@ -81,7 +74,6 @@ export default function BlogCard({ title, description, slug, date, imageUrl, cat
             quality={85}
             onError={handleImageError}
             priority={false}
-            unoptimized={true}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
@@ -98,7 +90,7 @@ export default function BlogCard({ title, description, slug, date, imageUrl, cat
             {title}
           </h3>
         </Link>
-        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{description}</p>
+        <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
         <Link
           href={`/blog/${slug}`}
           className="inline-flex items-center text-primary hover:text-primary/80 dark:text-primary/80 dark:hover:text-primary font-medium transition-colors duration-200 mt-auto btn-animated"

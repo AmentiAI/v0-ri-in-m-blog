@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  const heroImage = "/images/providence-night.png"
+  const newportHarborImage = "/images/providence-night.png"
 
   return (
     <ErrorBoundary>
@@ -118,7 +118,7 @@ export default function BlogPage() {
           <div className="relative mb-16 rounded-2xl overflow-hidden">
             <div className="h-64 md:h-80 relative">
               <Image
-                src={heroImage || "/placeholder.svg"}
+                src={newportHarborImage || "/placeholder.svg"}
                 alt="Providence, Rhode Island skyline at night"
                 fill
                 className="object-cover"

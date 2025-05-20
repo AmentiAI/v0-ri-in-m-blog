@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { allBlogPosts } from "./blog-data"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -35,7 +36,7 @@ export function formatDate(dateString: string) {
 
 // Default fallback image
 export function getPlaceholderImage(): string {
-  return "/images/digital-marketing.jpg"
+  return "https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg"
 }
 
 // Generate blur placeholder data URLs
@@ -60,16 +61,127 @@ export function keywordToSlug(keyword: string): string {
     .replace(/\s+/g, "-") // Replace spaces with hyphens
 }
 
-// Function to get a normalized image path that always includes the leading slash
-export function normalizeImagePath(path: string | null | undefined): string {
-  if (!path) return "/images/digital-marketing.jpg"
+// Available images for keyword articles
+const availableImages = [
+  "/images/digital-marketing.jpg",
+  "/images/seo-strategy.jpg",
+  "/images/social-media-marketing.jpg",
+  "/images/email-marketing.jpg",
+  "/images/ppc-advertising.jpg",
+  "/images/web-design.jpg",
+  "/images/content-marketing.jpg",
+  "/images/ri-business-meeting.jpg",
+  "/images/ri-marketing-team.jpg",
+  "/images/providence-skyline.jpg",
+  "/images/newport-harbor.jpg",
+  "/images/ri-small-business.jpg",
+  "/images/providence-night.png",
+  "/images/providence-sunset.png",
+  "/images/providence-waterfire.png",
+  "/images/providence-daytime.png",
+  "/images/providence-statehouse.png",
+]
 
-  if (!path.startsWith("/") && !path.startsWith("http")) {
-    return `/${path}`
+// Function to deterministically select an image for a keyword
+function getImageForKeyword(keyword: string): string {
+  // Create a simple hash of the keyword
+  let hash = 0
+  for (let i = 0; i < keyword.length; i++) {
+    hash = (hash << 5) - hash + keyword.charCodeAt(i)
+    hash = hash & hash // Convert to 32bit integer
   }
 
-  return path
+  // Use the hash to select an image
+  const imageIndex = Math.abs(hash % availableImages.length)
+  return availableImages[imageIndex]
 }
 
-// Import from blog-data directly rather than defining everything here
-export { allBlogPosts as blogPosts } from "./blog-data"
+// Add function to generate dynamic content for keyword articles
+export function generateKeywordArticleContent(keyword: string): string {
+  // Use a fixed keyword for the link to avoid hydration issues
+  const linkKeyword = "Providence SEO Company"
+
+  return `
+# ${keyword}
+
+## Expert ${keyword} Services for Rhode Island Businesses
+
+Are you looking for top-quality ${keyword} services in Rhode Island? You've come to the right place. In today's competitive digital landscape, having a strong online presence is essential for businesses of all sizes, and our expert team specializes in delivering exceptional ${keyword} solutions tailored to the unique needs of Rhode Island businesses.
+
+## Why ${keyword} Matters for Rhode Island Businesses
+
+In the competitive Rhode Island market, effective ${keyword} strategies can make the difference between thriving and merely surviving. Our approach combines industry best practices with deep local knowledge to create solutions that drive real results for businesses throughout Providence, Newport, Warwick, and all Rhode Island communities.
+
+### The Benefits of Professional ${keyword} Services
+
+When you partner with experts for your ${keyword} needs, you'll experience numerous advantages:
+
+1. **Increased Local Visibility**: Our tailored strategies help Rhode Island businesses appear prominently in local searches
+2. **Higher Quality Traffic**: Attract visitors who are actively searching for your products or services in Rhode Island
+3. **Improved Conversion Rates**: Turn more of your website visitors into paying customers
+4. **Enhanced Brand Reputation**: Build credibility and trust with your Rhode Island audience
+5. **Data-Driven Results**: Make decisions based on analytics and proven performance metrics
+
+## Our ${keyword} Process
+
+Our comprehensive approach to ${keyword} for Rhode Island businesses includes:
+
+### 1. In-Depth Analysis
+
+We begin with a thorough assessment of your current online presence, competitive landscape, and specific goals for your Rhode Island business.
+
+### 2. Strategic Planning
+
+Based on our findings, we develop a customized strategy designed to achieve your objectives in the Rhode Island market.
+
+### 3. Expert Implementation
+
+Our team of specialists executes your strategy with precision, using industry best practices and innovative techniques.
+
+### 4. Continuous Optimization
+
+We constantly monitor performance and make data-driven adjustments to maximize your results.
+
+### 5. Transparent Reporting
+
+Regular reports keep you informed about your progress and the return on your investment.
+
+## Why Choose Us for ${keyword} in Rhode Island
+
+Our team brings unmatched expertise in ${keyword} combined with deep knowledge of the Rhode Island market. We understand the unique challenges and opportunities that local businesses face, and we're committed to helping you achieve sustainable growth.
+
+## Ready to Transform Your ${keyword} Strategy?
+
+If you're ready to take your Rhode Island business to the next level with professional ${keyword} services, we're here to help. Contact our [${linkKeyword}](https://amentiai.com) team today for a free consultation and discover how our tailored solutions can drive growth for your business.
+`
+}
+
+// Add this helper function to generate dynamic blog post data
+export function generateDynamicBlogPost(keyword: string) {
+  const slug = keyword
+    .toLowerCase()
+    .replace(/[^\w\s]/g, "") // Remove special characters
+    .replace(/\s+/g, "-") // Replace spaces with hyphens
+
+  // Use a fixed date to avoid hydration issues
+  const date = "2025-01-01T00:00:00Z"
+
+  // Use a deterministic approach instead of random
+  const linkKeyword = "Providence SEO Company" // Always use the same keyword
+
+  // Get a deterministic image for this keyword
+  const imageUrl = getImageForKeyword(keyword)
+
+  return {
+    title: keyword,
+    slug: slug,
+    date: date,
+    description: `Expert ${keyword} services and strategies for Rhode Island businesses. Learn how our tailored solutions can help you grow your business.`,
+    imageUrl: imageUrl, // Use a real image instead of placeholder
+    content: generateKeywordArticleContent(keyword),
+    isDynamic: true,
+    linkKeyword: linkKeyword,
+  }
+}
+
+export const blogPosts = allBlogPosts
