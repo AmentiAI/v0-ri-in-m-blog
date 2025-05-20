@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Script from "next/script"
-import { blogPosts } from "@/lib/utils"
+import { allBlogPosts } from "@/lib/blog-data"
 import BlogCard from "@/components/blog-card"
 import Newsletter from "@/components/newsletter"
 import Image from "next/image"
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
-  const newportHarborImage = "/images/providence-night.png"
+  const heroImage = "/images/providence-night.png"
 
   return (
     <ErrorBoundary>
@@ -57,7 +57,7 @@ export default function BlogPage() {
                   url: "https://rimarkettrends.com/images/rimarket-trends-logo.png",
                 },
               },
-              blogPosts: blogPosts.slice(0, 10).map((post) => ({
+              blogPosts: allBlogPosts.slice(0, 10).map((post) => ({
                 "@type": "BlogPosting",
                 headline: post.title,
                 description: post.description,
@@ -118,7 +118,7 @@ export default function BlogPage() {
           <div className="relative mb-16 rounded-2xl overflow-hidden">
             <div className="h-64 md:h-80 relative">
               <Image
-                src={newportHarborImage || "/placeholder.svg"}
+                src={heroImage || "/placeholder.svg"}
                 alt="Providence, Rhode Island skyline at night"
                 fill
                 className="object-cover"
@@ -146,7 +146,7 @@ export default function BlogPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map((post) => (
+            {allBlogPosts.map((post) => (
               <div key={post.slug}>
                 <BlogCard
                   title={post.title}
@@ -154,6 +154,7 @@ export default function BlogPage() {
                   slug={post.slug}
                   date={post.date}
                   imageUrl={post.imageUrl}
+                  category={post.category || "Marketing"}
                 />
               </div>
             ))}

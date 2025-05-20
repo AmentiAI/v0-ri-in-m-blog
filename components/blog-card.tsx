@@ -12,12 +12,25 @@ interface BlogCardProps {
   slug: string
   date: string
   imageUrl: string | null | undefined
+  category?: string
 }
 
-export default function BlogCard({ title, description, slug, date, imageUrl }: BlogCardProps) {
-  const imageSrc = imageUrl || "https://placehold.co/800x600/0096FF/FFFFFF.png"
+export default function BlogCard({ title, description, slug, date, imageUrl, category = "Marketing" }: BlogCardProps) {
   const [isInView, setIsInView] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
+  const [imageError, setImageError] = useState(false)
+
+  // Default fallback image - always use this if no image or on error
+  const fallbackImage = "/images/digital-marketing.jpg"
+
+  // Normalize image path to ensure it starts with a slash
+  let normalizedImageUrl = imageUrl || fallbackImage
+  if (normalizedImageUrl && !normalizedImageUrl.startsWith("/") && !normalizedImageUrl.startsWith("http")) {
+    normalizedImageUrl = `/${normalizedImageUrl}`
+  }
+
+  // Determine the actual image to display
+  const displayImage = imageError ? fallbackImage : normalizedImageUrl
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -43,6 +56,11 @@ export default function BlogCard({ title, description, slug, date, imageUrl }: B
     }
   }, [])
 
+  // Handle image error by using a fallback
+  const handleImageError = () => {
+    setImageError(true)
+  }
+
   return (
     <motion.div
       ref={cardRef}
@@ -55,12 +73,15 @@ export default function BlogCard({ title, description, slug, date, imageUrl }: B
       <Link href={`/blog/${slug}`} className="block relative">
         <div className="relative h-56 w-full overflow-hidden rounded-t-xl group">
           <Image
-            src={imageSrc || "/placeholder.svg"}
+            src={displayImage || "/placeholder.svg"}
             alt={title}
             fill
             className="object-cover transition-transform duration-500 group-hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             quality={85}
+            onError={handleImageError}
+            priority={false}
+            unoptimized={true}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/0 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
@@ -70,14 +91,14 @@ export default function BlogCard({ title, description, slug, date, imageUrl }: B
         <div className="flex items-center mb-2">
           <time className="text-sm text-gray-500 dark:text-gray-400">{formatDate(date)}</time>
           <span className="mx-2 text-gray-300 dark:text-gray-600">•</span>
-          <span className="text-sm text-primary dark:text-primary/80">Marketing</span>
+          <span className="text-sm text-primary dark:text-primary/80">{category}</span>
         </div>
         <Link href={`/blog/${slug}`} className="flex-grow group">
           <h3 className="text-xl font-bold mb-2 dark:text-white group-hover:text-primary dark:group-hover:text-primary/80 transition-colors duration-200">
             {title}
           </h3>
         </Link>
-        <p className="text-gray-600 dark:text-gray-300 mb-4">{description}</p>
+        <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-2">{description}</p>
         <Link
           href={`/blog/${slug}`}
           className="inline-flex items-center text-primary hover:text-primary/80 dark:text-primary/80 dark:hover:text-primary font-medium transition-colors duration-200 mt-auto btn-animated"

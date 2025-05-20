@@ -119,11 +119,129 @@ export const footerKeywords = [
   "Technical SEO Services Providence",
 ]
 
+// Available images for keyword articles
+const availableImages = [
+  "/images/digital-marketing.jpg",
+  "/images/seo-strategy.jpg",
+  "/images/social-media-marketing.jpg",
+  "/images/email-marketing.jpg",
+  "/images/ppc-advertising.jpg",
+  "/images/web-design.jpg",
+  "/images/content-marketing.jpg",
+  "/images/ri-business-meeting.jpg",
+  "/images/ri-marketing-team.jpg",
+  "/images/providence-skyline.jpg",
+  "/images/newport-harbor.jpg",
+  "/images/ri-small-business.jpg",
+  "/images/providence-night.png",
+  "/images/providence-sunset.png",
+  "/images/providence-waterfire.png",
+  "/images/providence-daytime.png",
+  "/images/providence-statehouse.png",
+]
+
+// Function to deterministically assign an image to a keyword
+function getImageForKeyword(keyword: string, index: number): string {
+  // Use a combination of the keyword and index to deterministically select an image
+  // This ensures the same keyword always gets the same image
+
+  // Create a simple hash of the keyword
+  let hash = 0
+  for (let i = 0; i < keyword.length; i++) {
+    hash = (hash << 5) - hash + keyword.charCodeAt(i)
+    hash = hash & hash // Convert to 32bit integer
+  }
+
+  // Use the hash and index to select an image
+  const imageIndex = Math.abs((hash + index) % availableImages.length)
+  return availableImages[imageIndex]
+}
+
+// Function to categorize keywords and assign appropriate images
+function getCategoryAndImageForKeyword(keyword: string, index: number): { category: string; imageUrl: string } {
+  // Determine category based on keyword content
+  let category = "Digital Marketing"
+
+  if (keyword.toLowerCase().includes("seo") || keyword.toLowerCase().includes("search engine")) {
+    category = "SEO"
+    // Prefer SEO-related images
+    if (index % 3 === 0) {
+      return { category, imageUrl: "/images/seo-strategy.jpg" }
+    }
+  } else if (keyword.toLowerCase().includes("web") || keyword.toLowerCase().includes("design")) {
+    category = "Web Design"
+    // Prefer web design images
+    if (index % 3 === 0) {
+      return { category, imageUrl: "/images/web-design.jpg" }
+    }
+  } else if (keyword.toLowerCase().includes("social") || keyword.toLowerCase().includes("facebook")) {
+    category = "Social Media"
+    // Prefer social media images
+    if (index % 3 === 0) {
+      return { category, imageUrl: "/images/social-media-marketing.jpg" }
+    }
+  } else if (
+    keyword.toLowerCase().includes("ppc") ||
+    keyword.toLowerCase().includes("ads") ||
+    keyword.toLowerCase().includes("advertising")
+  ) {
+    category = "PPC Advertising"
+    // Prefer PPC images
+    if (index % 3 === 0) {
+      return { category, imageUrl: "/images/ppc-advertising.jpg" }
+    }
+  } else if (keyword.toLowerCase().includes("content")) {
+    category = "Content Marketing"
+    // Prefer content marketing images
+    if (index % 3 === 0) {
+      return { category, imageUrl: "/images/content-marketing.jpg" }
+    }
+  } else if (keyword.toLowerCase().includes("email")) {
+    category = "Email Marketing"
+    // Prefer email marketing images
+    if (index % 3 === 0) {
+      return { category, imageUrl: "/images/email-marketing.jpg" }
+    }
+  }
+
+  // For location-specific keywords, use location images
+  if (keyword.toLowerCase().includes("providence")) {
+    if (index % 4 === 0) {
+      return { category, imageUrl: "/images/providence-skyline.jpg" }
+    } else if (index % 4 === 1) {
+      return { category, imageUrl: "/images/providence-night.png" }
+    } else if (index % 4 === 2) {
+      return { category, imageUrl: "/images/providence-daytime.png" }
+    } else {
+      return { category, imageUrl: "/images/providence-statehouse.png" }
+    }
+  } else if (keyword.toLowerCase().includes("newport")) {
+    return { category, imageUrl: "/images/newport-harbor.jpg" }
+  } else if (keyword.toLowerCase().includes("rhode island") || keyword.toLowerCase().includes("ri ")) {
+    if (index % 3 === 0) {
+      return { category, imageUrl: "/images/ri-business-meeting.jpg" }
+    } else if (index % 3 === 1) {
+      return { category, imageUrl: "/images/ri-marketing-team.jpg" }
+    } else {
+      return { category, imageUrl: "/images/ri-small-business.jpg" }
+    }
+  }
+
+  // Default to a deterministic selection from available images
+  return {
+    category,
+    imageUrl: getImageForKeyword(keyword, index),
+  }
+}
+
 // Generate blog posts for each keyword
 export const keywordBlogPosts = footerKeywords.map((keyword, index) => {
   // Create a date that's progressively earlier (starting from 2025-01-01)
   const date = new Date("2025-01-01")
   date.setDate(date.getDate() - index * 3) // Space them out by 3 days
+
+  // Get category and image for this keyword
+  const { category, imageUrl } = getCategoryAndImageForKeyword(keyword, index)
 
   return {
     title: keyword,
@@ -133,9 +251,10 @@ export const keywordBlogPosts = footerKeywords.map((keyword, index) => {
       .replace(/\s+/g, "-"),
     date: date.toISOString(),
     description: `Expert ${keyword} services and strategies for Rhode Island businesses. Learn how our tailored solutions can help you grow your business.`,
-    imageUrl: `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(keyword)}`,
+    imageUrl: imageUrl, // Use the assigned image instead of a placeholder
     content: generateKeywordArticleContent(keyword),
     isDynamic: true,
     linkKeyword: "Providence SEO Company", // Use a fixed keyword to avoid hydration issues
+    category: category, // Add category for future filtering
   }
 })

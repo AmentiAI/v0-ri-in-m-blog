@@ -1,4 +1,5 @@
-import { blogPosts, formatDate, generateDynamicBlogPost } from "@/lib/utils"
+import { allBlogPosts } from "@/lib/blog-data"
+import { formatDate } from "@/lib/utils"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
   const { slug } = params
 
   // Try to find an existing blog post
-  const post = blogPosts.find((post) => post.slug === slug)
+  const post = allBlogPosts.find((post) => post.slug === slug)
 
   if (post) {
     return {
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
         publishedTime: post.date,
         images: [
           {
-            url: post.imageUrl || `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(post.title)}`,
+            url: post.imageUrl || `/images/digital-marketing.jpg`,
             width: 1200,
             height: 630,
             alt: post.title,
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
         card: "summary_large_image",
         title: `${post.title} | RIMarketTrends.com`,
         description: post.description,
-        images: [post.imageUrl || `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(post.title)}`],
+        images: [post.imageUrl || `/images/digital-marketing.jpg`],
       },
     }
   }
@@ -71,7 +72,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
       type: "article",
       images: [
         {
-          url: `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(title)}`,
+          url: `/images/digital-marketing.jpg`,
           width: 1200,
           height: 630,
           alt: title,
@@ -82,7 +83,7 @@ export async function generateMetadata({ params }: BlogPostPageProps) {
 }
 
 export function generateStaticParams() {
-  return blogPosts.map((post) => ({
+  return allBlogPosts.map((post) => ({
     slug: post.slug,
   }))
 }
@@ -92,32 +93,19 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = params
 
   // Try to find an existing blog post
-  const post = blogPosts.find((post) => post.slug === slug)
+  const post = allBlogPosts.find((post) => post.slug === slug)
 
-  // If no post is found, create a dynamic one based on the slug
-  const dynamicPost = !post
-    ? generateDynamicBlogPost(
-        slug
-          .split("-")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" "),
-      )
-    : null
-
-  if (!post && !dynamicPost) {
+  if (!post) {
     notFound()
   }
 
-  const currentPost = post || dynamicPost
+  const currentPost = post
 
   // Get related posts (excluding current post and placeholders)
-  const relatedPosts = blogPosts
-    .filter((p) => p.slug !== slug && p.slug !== "placeholder-dynamic" && !p.isDynamic)
-    .slice(0, 2)
+  const relatedPosts = allBlogPosts.filter((p) => p.slug !== slug && !p.isDynamic).slice(0, 2)
 
   // Use the post's imageUrl or a default placeholder
-  const postImage =
-    currentPost.imageUrl || `/placeholder.svg?height=800&width=1200&query=${encodeURIComponent(currentPost.title)}`
+  const postImage = currentPost.imageUrl || `/images/digital-marketing.jpg`
 
   // Format the date on the server to avoid client/server mismatch
   const formattedDate = formatDate(currentPost.date)
@@ -231,7 +219,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 {formattedDate}
               </time>
               <span className="mx-2 text-gray-300 dark:text-gray-600">•</span>
-              <span className="text-primary dark:text-primary/80">Rhode Island Marketing</span>
+              <span className="text-primary dark:text-primary/80">
+                {currentPost.category || "Rhode Island Marketing"}
+              </span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">{currentPost.title}</h1>
           </div>
@@ -264,10 +254,8 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             <h3 className="text-2xl font-bold mb-6 dark:text-white">Related Insights</h3>
             <div className="grid md:grid-cols-2 gap-8">
               {relatedPosts.map((relatedPost) => {
-                // Use the related post's imageUrl or a default placeholder
-                const relatedPostImage =
-                  relatedPost.imageUrl ||
-                  `https://placehold.co/800x600/0096FF/FFFFFF.png?text=${encodeURIComponent(relatedPost.title)}`
+                // Use the related post's imageUrl or a default image
+                const relatedPostImage = relatedPost.imageUrl || "/images/digital-marketing.jpg"
 
                 return (
                   <div
@@ -312,7 +300,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               strategies tailored to your specific needs.
             </p>
             <Button asChild size="lg" className="shadow-lg hover:shadow-xl transition-all duration-300">
-              <Link href="/contact">Get a Free Consultation</Link>
+              <Link href="https://amentiai.com/#contact">Get a Free Consultation</Link>
             </Button>
           </div>
         </article>
