@@ -1,29 +1,42 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Ignore TypeScript and ESLint errors during build
+  reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: true,
   },
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // Improve image configuration for deployment
   images: {
-    domains: [
-      "images.pexels.com",
-      "images.unsplash.com",
-      "placehold.co",
-      "v0.blob.com",
-      "hebbkx1anhila5yf.public.blob.vercel-storage.com",
-    ],
-    formats: ["image/avif", "image/webp"],
+    formats: ["image/avif", "image/webp"], // Keep this
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**",
+        hostname: "blob.v0.dev",
       },
+      {
+        protocol: "https",
+        hostname: "hebbkx1anhila5yf.public.blob.vercel-storage.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
+      // Add any other specific hostnames you expect to use.
+      // Avoid "**" for hostname if possible for better security long-term.
+      // For debugging, you could temporarily add one very broad one if you suspect
+      // an unlisted domain, but the ones above cover what's been mentioned.
     ],
   },
+  // ... other configurations
 }
 
 module.exports = nextConfig

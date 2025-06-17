@@ -7,10 +7,9 @@ export const blogPosts = [
     description:
       "Discover how Amenti AI is revolutionizing digital marketing for Rhode Island businesses with cutting-edge AI technology and personalized consultation services.",
     imageUrl:
-      "https://sjc.microlink.io/xODKlHkhfJwruiHN-ArO4iIurGVo9HJ4HJtglZVDymzeIlBg7NX4TuX4NNJyEdGdo-gW-u5LSAamk24Bvi5UEw.jpeg",
+      "https://sjc.microlink.io/xODKlHkhfJwruiHN-ArO4iIurGVo9HJ4HJtglZVDymzeIlBg7NX4TuX4NNJyEdGdo-gW-u5LSAamk24Bvi5UEw.jpeg", // Image from user upload
     content: `
 # Introducing Amenti AI: The Future of Digital Marketing in Rhode Island
-
 The digital marketing landscape in Rhode Island is evolving rapidly, and at the forefront of this transformation is [Amenti AI](https://amentiai.com), a revolutionary platform that combines artificial intelligence with deep local market expertise to deliver unprecedented results for businesses across the Ocean State.
 
 ## What Makes Amenti AI Different
@@ -113,7 +112,7 @@ If you're ready to experience the power of AI-driven marketing for your Rhode Is
 Don't let your competition get ahead – discover how [Amenti AI](https://amentiai.com) can revolutionize your digital marketing efforts and drive unprecedented growth for your Rhode Island business.
 
 Visit [amentiai.com](https://amentiai.com) today to schedule your free consultation and take the first step toward marketing success powered by artificial intelligence.
-    `,
+`,
     category: "AI Technology",
   },
   {
@@ -178,7 +177,7 @@ Looking ahead, Amenti AI is positioned to continue leading the SEO landscape in 
 Founded with a mission to transform how businesses approach digital marketing, Amenti AI has quickly established itself as the premier SEO and digital marketing agency in Rhode Island. The company specializes in helping local businesses achieve sustainable growth through data-driven strategies, technical excellence, and deep market knowledge.
 
 For businesses looking to improve their search visibility and drive meaningful results, Amenti AI offers comprehensive SEO services tailored to the unique needs of the Rhode Island market.
-    `,
+`,
   },
   {
     title: "How Amenti AI Transformed AMP Roofing LLC's Digital Presence",
@@ -271,7 +270,7 @@ The success of AMP Roofing's digital transformation highlights the importance of
 
 "Many local businesses underestimate the impact that effective digital marketing can have on their growth," explains our team. "With the right strategy, even small local businesses can compete effectively online and reach new customers they wouldn't have connected with otherwise."
 
-For AMP Roofing, the partnership has not only increased their visibility but has also helped them better communicate their value proposition to potential customers. By clearly showcasing their expertise, quality workmanship, and commitment to customer satisfaction, they've been able to attract more of their ideal clients.
+For AMP Roofing, the partnership has not onlyincreased their visibility but has also helped them better communicate their value proposition to potential customers. By clearly showcasing their expertise, quality workmanship, and commitment to customer satisfaction, they've been able to attract more of their ideal clients.
 
 ## Looking to the Future
 
@@ -287,7 +286,7 @@ Building on their digital marketing success, AMP Roofing continues to refine and
 ## Is Your Rhode Island Business Ready for a Digital Transformation?
 
 If you're a Rhode Island business looking to improve your online presence and attract more customers, the success of AMP Roofing shows what's possible with the right digital marketing strategy. Contact us today to learn how we can help transform your digital presence and grow your business.
-    `,
+`,
   },
   {
     title: "Amenti AI: Revolutionizing Digital Marketing in Providence",
@@ -368,7 +367,7 @@ For Rhode Island businesses looking to grow their digital presence, we offer a p
 Businesses interested in working with us can begin with a comprehensive digital audit. This in-depth analysis examines current online performance and identifies specific opportunities for improvement.
 
 In a digital world where standing out is increasingly difficult, we're helping Rhode Island businesses not just compete, but truly excel. Our innovative approach to digital marketing in Providence is setting a new standard for what businesses can expect from their marketing partners.
-    `,
+`,
   },
   {
     title: "SEO Strategies for Rhode Island Small Businesses",
@@ -389,20 +388,20 @@ Rhode Island's compact geography creates both challenges and opportunities for l
 ### Key Local SEO Strategies
 
 1. **Optimize for "Near Me" Searches**
-   
-   Rhode Island residents frequently use "near me" searches to find local businesses. Ensure your Google Business Profile is fully optimized with accurate business information, categories, and regular updates.
+
+Rhode Island residents frequently use "near me" searches to find local businesses. Ensure your Google Business Profile is fully optimized with accurate business information, categories, and regular updates.
 
 2. **Target Rhode Island-Specific Keywords**
-   
-   Include location-specific keywords in your content, meta descriptions, and page titles. For example, "best coffee shop in Providence" or "East Greenwich plumber services."
+
+Include location-specific keywords in your content, meta descriptions, and page titles. For example, "best coffee shop in Providence" or "East Greenwich plumber services."
 
 3. **Build Local Citations**
-   
-   Get listed in Rhode Island business directories and local publications. Consistent NAP (Name, Address, Phone) information across all platforms is crucial.
+
+Get listed in Rhode Island business directories and local publications. Consistent NAP (Name, Address, Phone) information across all platforms is crucial.
 
 4. **Create Location-Specific Content**
-   
-   Develop content that addresses local issues, events, or news relevant to your Rhode Island audience. This helps establish your business as a local authority.
+
+Develop content that addresses local issues, events, or news relevant to your Rhode Island audience. This helps establish your business as a local authority.
 
 ## Technical SEO Considerations
 
@@ -415,7 +414,7 @@ Beyond local optimization, Rhode Island businesses should focus on these technic
 ## Need Professional SEO Help?
 
 Implementing effective SEO strategies in Providence RI takes time and expertise. If you're looking for professional assistance with your Rhode Island business's SEO strategy, our [Rhode Island SEO](https://amentiai.com) experts understand the local market and can help your business achieve sustainable growth through targeted search engine optimization.
-    `,
+`,
   },
   {
     title: "Social Media Marketing Tips for Rhode Island Businesses",
@@ -443,20 +442,20 @@ Not all social media platforms will yield the same results for your Rhode Island
 Content that resonates with local audiences will generate the most engagement:
 
 1. **Highlight Local Connections**
-   
-   Share your business's involvement in Rhode Island communities, local events, or partnerships with other Ocean State businesses.
+
+Share your business's involvement in Rhode Island communities, local events, or partnerships with other Ocean State businesses.
 
 2. **Leverage Local Hashtags**
-   
-   Use hashtags like #RhodeIsland, #OceanState, #ProvidenceRI, or neighborhood-specific tags to increase local visibility.
+
+Use hashtags like #RhodeIsland, #OceanState, #ProvidenceRI, or neighborhood-specific tags to increase local visibility.
 
 3. **Showcase Rhode Island Pride**
-   
-   Rhode Islanders have strong state pride – incorporate local landmarks, traditions, or cultural references that locals will recognize and appreciate.
+
+Rhode Islanders have strong state pride – incorporate local landmarks, traditions, or cultural references that locals will recognize and appreciate.
 
 4. **Engage with Local Influencers**
-   
-   Partner with Rhode Island-based influencers who have authentic connections to local communities.
+
+Partner with Rhode Island-based influencers who have authentic connections to local communities.
 
 ## Measuring Social Media Success
 
@@ -470,7 +469,7 @@ Track these key metrics to evaluate your social media performance:
 ## Need Professional Social Media Management?
 
 Managing effective social media marketing in Providence takes consistent effort and strategic planning. If you're looking for expert help with your Rhode Island business's social media presence, our [Social Media Marketing RI](https://amentiai.com) team understands the Rhode Island market and can help your business build meaningful connections with local customers.
-    `,
+`,
   },
   {
     title: "Email Marketing Strategies for Rhode Island Businesses",
@@ -489,20 +488,20 @@ Email marketing remains one of the most effective digital marketing channels, of
 The foundation of successful email marketing is a quality list of subscribers who are genuinely interested in your business:
 
 1. **Local In-Store Signups**
-   
-   Encourage customers visiting your Rhode Island location to join your email list with special local offers or discounts.
+
+Encourage customers visiting your Rhode Island location to join your email list with special local offers or discounts.
 
 2. **Rhode Island Events**
-   
-   Collect email signups at local events, farmers markets, or community gatherings across the state.
+
+Collect email signups at local events, farmers markets, or community gatherings across the state.
 
 3. **Website Optimization**
-   
-   Create Rhode Island-specific lead magnets that provide value to local customers, such as guides to local resources or special offers for state residents.
+
+Create Rhode Island-specific lead magnets that provide value to local customers, such as guides to local resources or special offers for state residents.
 
 4. **Segment by Location**
-   
-   If you serve multiple areas, segment your list by specific Rhode Island communities (Providence, Newport, Warwick, etc.) to deliver more relevant content.
+
+If you serve multiple areas, segment your list by specific Rhode Island communities (Providence, Newport, Warwick, etc.) to deliver more relevant content.
 
 ## Creating Engaging Email Content
 
@@ -531,21 +530,21 @@ Content that connects with Rhode Island subscribers will generate higher open an
 Implement these automated email sequences to nurture relationships with minimal ongoing effort:
 
 1. **Welcome Series**
-   
-   Introduce new subscribers to your Rhode Island business with a series of 3-5 emails that share your local story and unique value proposition.
+
+Introduce new subscribers to your Rhode Island business with a series of 3-5 emails that share your local story and unique value proposition.
 
 2. **Post-Purchase Flows**
-   
-   Follow up with customers after purchases with thank you messages, usage tips, and requests for reviews on local platforms.
+
+Follow up with customers after purchases with thank you messages, usage tips, and requests for reviews on local platforms.
 
 3. **Re-Engagement Campaigns**
-   
-   Bring back inactive subscribers with special "we miss you" offers specific to Rhode Island customers.
+
+Bring back inactive subscribers with special "we miss you" offers specific to Rhode Island customers.
 
 ## Need Professional Email Marketing Help?
 
 Creating and maintaining effective email marketing campaigns in Providence requires consistent effort and strategic planning. If you're looking for expert help with your Rhode Island business's email marketing, our [Marketing Agency Providence RI](https://amentiai.com) team understands the local market and can help your business build meaningful connections with local customers through targeted email campaigns.
-    `,
+`,
   },
   {
     title: "Web Design Best Practices for Rhode Island Businesses",
@@ -627,7 +626,7 @@ Beyond design elements, these technical factors are crucial for Rhode Island bus
 ## Need Professional Web Design Help?
 
 Creating an effective website that resonates with Rhode Island customers requires both technical expertise and local market knowledge. If you're looking for professional assistance with your Rhode Island business's web presence, our [Website Design Providence RI](https://amentiai.com) team combines technical excellence with deep local insights to create websites that drive real business results.
-    `,
+`,
   },
   {
     title: "PPC Advertising Strategies for Rhode Island Businesses",
@@ -738,7 +737,7 @@ Track these key metrics to evaluate your local PPC performance:
 ## Need Professional PPC Management?
 
 Creating and managing effective PPC campaigns for Rhode Island businesses requires specialized knowledge and ongoing optimization. If you're looking for expert help with your PPC advertising, our [PPC Management Providence](https://amentiai.com) team combines technical expertise with deep local market knowledge to create campaigns that drive measurable results for Rhode Island businesses.
-    `,
+`,
   },
   {
     title: "Content Marketing Strategies for Rhode Island Businesses",
@@ -887,7 +886,7 @@ Track these key metrics to evaluate your local content performance:
 ## Need Professional Content Marketing Help?
 
 Creating and executing an effective content marketing strategy for your Rhode Island business requires specialized knowledge and consistent effort. If you're looking for expert help with your content marketing, our [Content Marketing Providence](https://amentiai.com) team combines industry expertise with deep local market knowledge to create content strategies that drive meaningful results for Rhode Island businesses.
-    `,
+`,
   },
   {
     title: "Local SEO Tips for Newport, Rhode Island Businesses",
@@ -1029,60 +1028,51 @@ Track these key metrics to evaluate your Newport SEO performance:
 ## Need Professional Newport SEO Help?
 
 Creating and executing an effective local SEO strategy for your Newport business requires specialized knowledge and consistent effort. If you're looking for expert help with your Newport SEO, our [Newport RI SEO](https://amentiai.com) team combines technical expertise with deep local market knowledge to create strategies that drive meaningful results for Newport businesses.
-    `,
+`,
   },
 ]
 
-// Import the additional blog posts
-import { additionalBlogPosts } from "./additional-blog-posts"
+import { additionalBlogPosts as rawAdditionalBlogPosts } from "./additional-blog-posts"
 
-// Define the image mapping for keyword categories
-const keywordImageMap = {
-  SEO: "/images/seo-strategy.jpg",
-  "Web Design": "/images/web-design.jpg",
-  "Digital Marketing": "/images/digital-marketing.jpg",
-  "Social Media": "/images/social-media-marketing.jpg",
-  PPC: "/images/ppc-advertising.jpg",
-  "Content Marketing": "/images/content-marketing.jpg",
-  "Email Marketing": "/images/email-marketing.jpg",
-  Providence: "/images/providence-skyline.jpg",
-  Newport: "/images/newport-harbor.jpg",
-  "Rhode Island": "/images/ri-business-meeting.jpg",
-  Business: "/images/ri-marketing-team.jpg",
-  Default: "/images/digital-marketing.jpg",
-}
+const defaultAvailableImages = [
+  "/images/digital-marketing.jpg",
+  "/images/seo-strategy.jpg",
+  "/images/social-media-marketing.jpg",
+  "/images/email-marketing.jpg",
+  "/images/ppc-advertising.jpg",
+  "/images/web-design.jpg",
+  "/images/content-marketing.jpg",
+  "/images/ri-business-meeting.jpg",
+  "/images/ri-marketing-team.jpg",
+  "/images/providence-skyline.jpg",
+  "/images/newport-harbor.jpg",
+  "/images/ri-small-business.jpg",
+  "/images/providence-night.png",
+  "/images/providence-sunset.png",
+  "/images/providence-waterfire.png",
+  "/images/providence-daytime.png",
+  "/images/providence-statehouse.png",
+]
 
-// Function to determine the appropriate image for a keyword
-function getImageForKeyword(keyword: string): string {
-  const lowerKeyword = keyword.toLowerCase()
-
-  if (lowerKeyword.includes("seo") || lowerKeyword.includes("search engine")) {
-    return keywordImageMap["SEO"]
-  } else if (lowerKeyword.includes("web") || lowerKeyword.includes("design")) {
-    return keywordImageMap["Web Design"]
-  } else if (lowerKeyword.includes("social") || lowerKeyword.includes("facebook")) {
-    return keywordImageMap["Social Media"]
-  } else if (lowerKeyword.includes("ppc") || lowerKeyword.includes("ads") || lowerKeyword.includes("advertising")) {
-    return keywordImageMap["PPC"]
-  } else if (lowerKeyword.includes("content")) {
-    return keywordImageMap["Content Marketing"]
-  } else if (lowerKeyword.includes("email")) {
-    return keywordImageMap["Email Marketing"]
-  } else if (lowerKeyword.includes("providence")) {
-    return keywordImageMap["Providence"]
-  } else if (lowerKeyword.includes("newport")) {
-    return keywordImageMap["Newport"]
-  } else if (lowerKeyword.includes("rhode island") || lowerKeyword.includes("ri ")) {
-    return keywordImageMap["Rhode Island"]
-  } else if (lowerKeyword.includes("business")) {
-    return keywordImageMap["Business"]
-  } else {
-    return keywordImageMap["Default"]
+const processedAdditionalBlogPosts = rawAdditionalBlogPosts.map((post, index) => {
+  let imageUrl = post.imageUrl
+  if (!imageUrl || typeof imageUrl !== "string" || imageUrl.trim() === "") {
+    let hash = 0
+    if (post.title) {
+      for (let i = 0; i < post.title.length; i++) {
+        hash = (hash << 5) - hash + post.title.charCodeAt(i)
+        hash = hash & hash
+      }
+    } else {
+      hash = index
+    }
+    const imageIndex = Math.abs(hash % defaultAvailableImages.length)
+    imageUrl = defaultAvailableImages[imageIndex]
   }
-}
+  return { ...post, imageUrl }
+})
 
-// Generate keyword blog posts with appropriate images
-const keywordBlogPosts = [
+const keywordList = [
   "Providence SEO Company",
   "Website Design Providence RI",
   "Digital Marketing Providence RI",
@@ -1131,54 +1121,44 @@ const keywordBlogPosts = [
   "SEO Consultant Rhode Island",
   "Local Business SEO RI",
   "Technical SEO Services Providence",
-].map((keyword, index) => {
-  // Create a date that's progressively earlier (starting from 2025-01-01)
+]
+
+const keywordBlogPosts = keywordList.map((keyword, index) => {
   const date = new Date("2025-01-01")
   date.setDate(date.getDate() - index * 3) // Space them out by 3 days
 
-  // Get appropriate image for this keyword
-  const imageUrl = getImageForKeyword(keyword)
+  // Use the RI Market Trends logo for all keyword articles
+  const imageUrl = "/images/rimarket-trends-logo.png"
 
-  // Determine category based on keyword
   let category = "Digital Marketing"
-  if (keyword.toLowerCase().includes("seo") || keyword.toLowerCase().includes("search engine")) {
-    category = "SEO"
-  } else if (keyword.toLowerCase().includes("web") || keyword.toLowerCase().includes("design")) {
-    category = "Web Design"
-  } else if (keyword.toLowerCase().includes("social") || keyword.toLowerCase().includes("facebook")) {
-    category = "Social Media"
-  } else if (keyword.toLowerCase().includes("ppc") || keyword.toLowerCase().includes("ads")) {
+  const lowerKeyword = keyword.toLowerCase()
+  if (lowerKeyword.includes("seo") || lowerKeyword.includes("search engine")) category = "SEO"
+  else if (lowerKeyword.includes("web") || lowerKeyword.includes("design")) category = "Web Design"
+  else if (lowerKeyword.includes("social") || lowerKeyword.includes("facebook")) category = "Social Media"
+  else if (lowerKeyword.includes("ppc") || lowerKeyword.includes("ads") || lowerKeyword.includes("advertising"))
     category = "PPC Advertising"
-  } else if (keyword.toLowerCase().includes("content")) {
-    category = "Content Marketing"
-  } else if (keyword.toLowerCase().includes("email")) {
-    category = "Email Marketing"
-  }
+  else if (lowerKeyword.includes("content")) category = "Content Marketing"
+  else if (lowerKeyword.includes("email")) category = "Email Marketing"
 
   return {
     title: keyword,
     slug: keyword
       .toLowerCase()
-      .replace(/[^\w\s]/g, "") // Remove special characters
-      .replace(/\s+/g, "-"), // Replace spaces with hyphens
+      .replace(/[^\w\s]/g, "")
+      .replace(/\s+/g, "-"),
     date: date.toISOString(),
     description: `Expert ${keyword} services and strategies for Rhode Island businesses. Learn how our tailored solutions can help you grow your business.`,
-    imageUrl: imageUrl, // Use the assigned image
+    imageUrl: imageUrl, // Assign the logo path
     content: `
 # ${keyword}
-
 ## Expert ${keyword} Services for Rhode Island Businesses
-
 Are you looking for top-quality ${keyword} services in Rhode Island? You've come to the right place. In today's competitive digital landscape, having a strong online presence is essential for businesses of all sizes, and our expert team specializes in delivering exceptional ${keyword} solutions tailored to the unique needs of Rhode Island businesses.
 
 ## Why ${keyword} Matters for Rhode Island Businesses
-
 In the competitive Rhode Island market, effective ${keyword} strategies can make the difference between thriving and merely surviving. Our approach combines industry best practices with deep local knowledge to create solutions that drive real results for businesses throughout Providence, Newport, Warwick, and all Rhode Island communities.
 
 ### The Benefits of Professional ${keyword} Services
-
 When you partner with experts for your ${keyword} needs, you'll experience numerous advantages:
-
 1. **Increased Local Visibility**: Our tailored strategies help Rhode Island businesses appear prominently in local searches
 2. **Higher Quality Traffic**: Attract visitors who are actively searching for your products or services in Rhode Island
 3. **Improved Conversion Rates**: Turn more of your website visitors into paying customers
@@ -1186,35 +1166,22 @@ When you partner with experts for your ${keyword} needs, you'll experience numer
 5. **Data-Driven Results**: Make decisions based on analytics and proven performance metrics
 
 ## Our ${keyword} Process
-
 Our comprehensive approach to ${keyword} for Rhode Island businesses includes:
-
 ### 1. In-Depth Analysis
-
 We begin with a thorough assessment of your current online presence, competitive landscape, and specific goals for your Rhode Island business.
-
 ### 2. Strategic Planning
-
 Based on our findings, we develop a customized strategy designed to achieve your objectives in the Rhode Island market.
-
 ### 3. Expert Implementation
-
 Our team of specialists executes your strategy with precision, using industry best practices and innovative techniques.
-
 ### 4. Continuous Optimization
-
 We constantly monitor performance and make data-driven adjustments to maximize your results.
-
 ### 5. Transparent Reporting
-
 Regular reports keep you informed about your progress and the return on your investment.
 
 ## Why Choose Us for ${keyword} in Rhode Island
-
 Our team brings unmatched expertise in ${keyword} combined with deep knowledge of the Rhode Island market. We understand the unique challenges and opportunities that local businesses face, and we're committed to helping you achieve sustainable growth.
 
 ## Ready to Transform Your ${keyword} Strategy?
-
 If you're ready to take your Rhode Island business to the next level with professional ${keyword} services, we're here to help. Contact our [Providence SEO Company](https://amentiai.com) team today for a free consultation and discover how our tailored solutions can drive growth for your business.
 `,
     isDynamic: true,
@@ -1223,4 +1190,19 @@ If you're ready to take your Rhode Island business to the next level with profes
 })
 
 // Combine all blog posts
-export const allBlogPosts = [...blogPosts, ...additionalBlogPosts, ...keywordBlogPosts]
+const combinedBlogPosts = [...blogPosts, ...processedAdditionalBlogPosts, ...keywordBlogPosts]
+
+// Final pass to ensure every post has an image, using a generic placeholder.svg if necessary
+const allBlogPostsWithPlaceholders = combinedBlogPosts.map((post) => {
+  if (!post.imageUrl || typeof post.imageUrl !== "string" || post.imageUrl.trim() === "") {
+    // Generate a placeholder with the post title as a query for better visual distinction
+    const query = post.title ? encodeURIComponent(post.title) : "Rhode Island Marketing Article"
+    return {
+      ...post,
+      imageUrl: `/placeholder.svg?width=600&height=400&query=${query}`,
+    }
+  }
+  return post
+})
+
+export const allBlogPosts = allBlogPostsWithPlaceholders
